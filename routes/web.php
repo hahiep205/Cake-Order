@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('register', [AuthController::class, 'register'])->name('auth.register');
+// Define route get tới register, gọi func register trong AuthController để hiển thị form đăng ký.
+
+Route::post('register', [AuthController::class, 'registered'])->name('auth.registered');
+// Define route post tới register, gọi func registered trong AuthController để xử lý đăng ký.

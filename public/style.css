@@ -1,0 +1,50 @@
+/*
+*** Base css.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 16px/1.6 Arial, sans-serif;
+    color: #222;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/*
+*** Login & Register
+*/
+#log {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section_title {
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 2rem;
+    font-weight: 500;
+}
+
+
+.log_form {
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-items: center;
+}
+
+.log_button {
+    width: 165.6px;
+    padding: 0.25rem;
+    justify-content: center;
+    display: block;
+    margin: 0 auto;
+}
