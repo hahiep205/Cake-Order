@@ -26,10 +26,36 @@ class User extends Authenticatable
         'session_token'
     ];
 
-    protected function casts(): array
+    public function createSession(): string
     {
-        return [
-            'password' => 'hashed',
-        ];
+        $token = Str::random(64);
+        $this->update(['session_token' => $token]);
+        return $token;
     }
+
+    public function destroySession(): void
+    {
+        $this->update(['session_token' => null]);
+    }
+
+    public function hasValidSession(): bool
+    {
+        return !is_null($this->session_token);
+    }
+
+    public static function findBySessionToken(string $token): ?self
+    {
+        return static::where('session_token', $token)->first();
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
 }

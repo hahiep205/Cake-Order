@@ -11,6 +11,14 @@ use App\Models\Product;
 class AuthController extends Controller
 {
 
+        /*
+     *** Func trả về page dashboard.
+     */
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
     /*
      *** Func trả về page register.
      */
@@ -45,7 +53,7 @@ class AuthController extends Controller
             'session_token' => $sessionCode
         ]);
 
-        return redirect()->route('auth.register');
+        return redirect()->route('dashboard');
     }
 
     /*
@@ -70,5 +78,48 @@ class AuthController extends Controller
         return true;
     }
 
+    /*
+    *** Func trả về page login
+    */
+    public function login()
+    {
+        return view('login');
+    }
+
+    /*
+    *** Func check account và tạo session ròi redirect tới route với role tương ứng.
+    */
+    public function logined(Request $request)
+    {
+        if (auth()->attempt($request->only('email', 'password'))) {
+
+            $sessionCode = $this->generateSessionCode();
+
+            auth()->user()->update([
+                'session_token' => $sessionCode
+            ]);
+
+            if (auth()->user()->isAdmin()) {
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('dashboard');
+            }
+        }
+        return redirect()->back()->withErrors(['email' => 'Email or password is incorrect.']);
+    }
+
+    /*
+    *** Func logout, xóa session token khi logout.
+    */
+    public function logout()
+    {
+        if (auth()->check()) {
+            auth()->user()->destroySession();
+        }
+
+        auth()->logout();
+        session()->flush();
+        return redirect()->route('dashboard');
+    }
 
 }
