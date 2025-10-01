@@ -16,6 +16,8 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
+Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
 Route::get('register', [AuthController::class, 'register'])->name('auth.register');
 // Define route get tới register, gọi func register trong AuthController để hiển thị form đăng ký.
 

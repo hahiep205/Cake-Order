@@ -11,7 +11,7 @@ use App\Models\Product;
 class AuthController extends Controller
 {
 
-        /*
+    /*
      *** Func trả về page dashboard.
      */
     public function dashboard()
@@ -35,7 +35,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:2',
         ]);
 
         $user = User::create([
@@ -47,35 +47,9 @@ class AuthController extends Controller
 
         auth()->login($user);
 
-        $sessionCode = $this->generateSessionCode();
-
-        $user->update([
-            'session_token' => $sessionCode
-        ]);
+        $user->createSession();
 
         return redirect()->route('dashboard');
-    }
-
-    /*
-     *** Func tạo session, dùng khi login.
-     */
-    private function generateSessionCode()
-    {
-        return Str::random(40);
-    }
-
-    /*
-     *** Func check xem session có valid ko.
-     */
-    public function checkSession()
-    {
-        $sessionCode = session('custom_session_code');
-
-        if (!$sessionCode) {
-            return false;
-        }
-
-        return true;
     }
 
     /*
@@ -93,11 +67,7 @@ class AuthController extends Controller
     {
         if (auth()->attempt($request->only('email', 'password'))) {
 
-            $sessionCode = $this->generateSessionCode();
-
-            auth()->user()->update([
-                'session_token' => $sessionCode
-            ]);
+            auth()->user()->createSession();
 
             if (auth()->user()->isAdmin()) {
                 return redirect()->route('dashboard');

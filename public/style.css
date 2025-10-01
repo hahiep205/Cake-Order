@@ -10,6 +10,7 @@
 body {
     font: 16px/1.6 Arial, sans-serif;
     color: #222;
+    padding-top: 56px;
 }
 
 .container {
@@ -34,7 +35,6 @@ body {
     font-weight: 500;
 }
 
-
 .log_form {
     gap: 1rem;
     margin: 2rem 0;
@@ -47,4 +47,108 @@ body {
     justify-content: center;
     display: block;
     margin: 0 auto;
+    font-weight: 500;
+}
+
+/*
+*** Navbar & Header
+*/
+.header {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    top: 0;
+    z-index: 70;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.nav {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    padding: 0 0.18rem;
+    font-weight: bold;
+    color: #5ba4fc;
+}
+
+/* Menu center */
+.nav_menu .nav_list {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+/* Menu phải */
+.nav_right .nav_item_right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav_list .nav_item,
+.nav_item_right .nav_link {
+    transition: all 0.3s ease;
+}
+
+.nav_list .nav_item:hover,
+.nav_item_right .nav_link:hover {
+    transform: translateY(3px);
+}
+
+/* Link */
+.logo,
+.nav_link {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav_link {
+    padding: 0.3rem 0.3rem;
+    border-radius: 4px;
+}
+
+
+
+/* Tên user */
+.nav_name {
+    font-weight: bold;
+    color: grey;
+    margin-right: 0.5rem;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+/*
+*** Footer
+*/
+.footer {
+    padding: 2rem 0;
+    background: #f5f5f5;
+}
+
+.footer_container {
+    display: grid;
+    gap: 2rem;
+    max-width: 1024px;
+}
+
+.footer_info {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.footer_copy {
+    font-size: 14px;
+    color: #888;
 }

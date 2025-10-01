@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -26,6 +27,7 @@ class User extends Authenticatable
         'session_token'
     ];
 
+    // Func tạo session, dùng khi login, register
     public function createSession(): string
     {
         $token = Str::random(64);
@@ -33,26 +35,19 @@ class User extends Authenticatable
         return $token;
     }
 
+    // Func xóa session khi logout
     public function destroySession(): void
     {
         $this->update(['session_token' => null]);
     }
 
-    public function hasValidSession(): bool
-    {
-        return !is_null($this->session_token);
-    }
-
-    public static function findBySessionToken(string $token): ?self
-    {
-        return static::where('session_token', $token)->first();
-    }
-
+    // func check xem user này có phải admin không.
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
 
+    // func check xem có phải user không.
     public function isUser(): bool
     {
         return $this->role === 'user';
