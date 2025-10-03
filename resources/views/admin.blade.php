@@ -4,34 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cake Order</title>
+    <title>Admin Managenment</title>
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/log.css">
     <link rel="stylesheet" href="/css/notification.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-<body>
+<body class="admin_page">
 
     @include('header')
 
-    <div class="container" style="padding: 11rem 0; padding-left: 1rem;">
-        <h1>This is admin page.</h1>
+    <!-- Notification Container -->
+    <div id="notificationContainer" class="notification_container"></div>
+
+    <div class="container">
+        <div class="admin_layout">
+            
+            <!-- SIDEBAR -->
+            <div class="admin_sidebar">
+                <h3 class="sidebar_title">ADMIN PANEL</h3>
+                <ul class="sidebar_menu">
+                    <li class="menu_item active" data-section="products">
+                        <i class="ri-cake-line"></i>
+                        <span>Product Management</span>
+                    </li>
+                    <li class="menu_item" data-section="orders">
+                        <i class="ri-shopping-cart-line"></i>
+                        <span>Order Management</span>
+                    </li>
+                    <li class="menu_item" data-section="users">
+                        <i class="ri-user-line"></i>
+                        <span>User Management</span>
+                    </li>
+                    <li class="menu_item" data-section="menu">
+                        <i class="ri-box-3-line"></i>
+                        <span>Menu Management</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="admin_content">
+                
+                <!-- Section: Product Management -->
+                <div class="content_section active" id="section_products">
+                    @include('admin.products')
+                </div>
+
+                <!-- Section: Order Management -->
+                <div class="content_section" id="section_orders">
+                    @include('admin.orders')
+                </div>
+
+                <!-- Section: User Management -->
+                <div class="content_section" id="section_users">
+                    @include('admin.users')
+                </div>
+
+                <!-- Section: Menu Management -->
+                <div class="content_section" id="section_menu">
+                    @include('admin.menu')
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
     @include('footer')
 
-    <script src="/js/notification.js"></script>
-    <script>
-        @if(session('success'))
-            showNotification('{{ session('success') }}', 'success');
-        @endif
-
-        @if(session('error'))
-            showNotification('{{ session('error') }}', 'error');
-        @endif
-    </script>
+    <!-- Include JavaScript Files -->
+    <script src="{{asset('js/notification.js')}}"></script>
+    <script src="{{asset('js/admin-menu.js')}}"></script>
 
 </body>
 </html>
