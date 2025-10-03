@@ -77,7 +77,7 @@
 
 .nav_search {
     position: relative;
-    display: flex;
+    display: none;
     background: #fff;
     max-width: 300px;
     width: 90%;
@@ -95,8 +95,6 @@
     align-items: center;
     padding: 8px 35px 8px 12px;
 }
-
-
 
 .nav_search a {
     position: absolute;
@@ -127,6 +125,7 @@
     }
     
     .nav_menu .nav_list {
+        display: flex;
         gap: 1rem;
     }
     
@@ -158,6 +157,7 @@
     }
     
     .nav_menu .nav_list {
+        display: none;
         gap: 0.75rem;
     }
     
@@ -182,10 +182,6 @@
         font-size: 20px;
         font-weight: bold;
     }
-
-    .nav_list {
-        display: none;
-    }
 }
 
 /* Max-width: 570px */
@@ -199,6 +195,7 @@
     }
     
     .nav_menu .nav_list {
+        display: none;
         gap: 0.5rem;
     }
     
@@ -224,10 +221,6 @@
         font-weight: bold;
         width: 88%;
     }
-
-    .nav_list {
-        display: none;
-    }
 }
 
 /* Min-width: 465px AND Max-width: 570px */
@@ -237,6 +230,7 @@
     }
     
     .nav_menu .nav_list {
+        display: none;
         gap: 0.6rem;
     }
     
@@ -250,9 +244,4 @@
         font-weight: bold;
         width: 88%;
     }
-
-    .nav_list {
-        display: none;
-    }
-
 }

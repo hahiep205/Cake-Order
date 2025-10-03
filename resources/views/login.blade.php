@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/log.css">
+    <link rel="stylesheet" href="/css/notification.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
@@ -39,6 +40,21 @@
     </section>
 
     @include('footer')
+
+    <script src="/js/notification.js"></script>
+    <script>
+        @if(session('success'))
+            showNotification('{{ session('success') }}', 'success');
+        @endif
+
+        @if(session('error'))
+            showNotification('{{ session('error') }}', 'error');
+        @endif
+
+        @if($errors->any())
+            showNotification('{{ $errors->first() }}', 'error');
+        @endif
+    </script>
 
 </body>
 </html>
