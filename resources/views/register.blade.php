@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAKE - Register</title>
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/log.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
@@ -14,28 +17,28 @@
     @include('header')
 
     <section id="log" class="section_log">
-        <div class="container">
+        <div class="log_container">
 
             <h2 class="section_title">Register</h2>
 
             <form action="/register" method="POST" class="log_form">
                 @csrf
                 <div class="form_group">
-                    <label for="name"><strong>Name:</strong></label><br>
-                    <input type="name" id="name" name="name" required>
+                    <label for="name"><strong>Name</strong></label>
+                    <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form_group">
-                    <label for="email"><strong>Email:</strong></label><br>
+                    <label for="email"><strong>Email</strong></label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form_group">
-                    <label for="password"><strong>Password:</strong></label><br>
+                    <label for="password"><strong>Password</strong></label>
                     <input type="password" id="password" name="password" required>
-                </div><br>
+                </div>
 
-                <button type="submit" class="log_button">REGISTER</button><br>
+                <button type="submit" class="log_button">REGISTER</button>
 
-                <p>Have an account? <a href='/login'>Login here</a>.</p><br>
+                <p class="log_link_text">Have an account? <a href='/login'>Login here</a></p>
             </form>
 
         </div>

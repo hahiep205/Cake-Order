@@ -3,17 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
@@ -32,3 +21,6 @@ Route::post('login', [AuthController::class, 'logined'])->name('auth.logined');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth'); 
 // Define route get tới logout, gọi func logout trong AuthController để xử lý đăng xuất, chỉ cho vào khi đã login.
+
+Route::get('admin', [AuthController::class, 'admin'])->name('admin')->middleware('auth');
+// Define route get tới admin, gọi func admin trong AuthController để hiển thị form cho admin.

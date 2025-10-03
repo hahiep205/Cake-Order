@@ -16,7 +16,7 @@
     @include('header')
 
     <div class="container" style="padding: 11rem 0; padding-left: 1rem;">
-        <h1>This is dashboard page.</h1>
+        <h1>This is admin page.</h1>
     </div>
 
     @include('footer')

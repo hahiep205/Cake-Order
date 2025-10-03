@@ -10,14 +10,21 @@
                     <a href="/" class="nav_link">Home</a>
                 </li>
                 <li class="nav_item">
-                    <a href="/" class="nav_link">About us</a>
+                    <a href="/products" class="nav_link">Products</a>
                 </li>
                 <li class="nav_item">
-                    <a href="/" class="nav_link">Popular</a>
+                    <a href="/about" class="nav_link">About</a>
                 </li>
                 <li class="nav_item">
-                    <a href="/" class="nav_link">Recently</a>
+                    <a href="/contact" class="nav_link">Contact</a>
                 </li>
+            </ul>
+
+            <ul class="nav_search">
+                <input type="text" placeholder="Search...">
+                <a href="#">
+                    <i class="ri-search-line fas"></i>
+                </a>
             </ul>
 
         </div>

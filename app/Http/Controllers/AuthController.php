@@ -19,6 +19,14 @@ class AuthController extends Controller
         return view('dashboard');
     }
 
+        /*
+     *** Func trả về page admin.
+     */
+    public function admin()
+    {
+        return view('admin');
+    }
+
     /*
      *** Func trả về page register.
      */
@@ -70,7 +78,7 @@ class AuthController extends Controller
             auth()->user()->createSession();
 
             if (auth()->user()->isAdmin()) {
-                return redirect()->route('dashboard');
+                return redirect()->route('admin');
             } else {
                 return redirect()->route('dashboard');
             }

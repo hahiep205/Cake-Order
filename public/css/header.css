@@ -1,0 +1,258 @@
+/*
+*** Navbar & Header
+*/
+.header {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    top: 0;
+    z-index: 70;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.nav {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    padding: 0 0.18rem;
+    font-weight: bold;
+    color: #5ba4fc;
+}
+
+/* Menu center */
+.nav_menu .nav_list {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+/* Menu phải */
+.nav_right .nav_item_right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav_list .nav_item,
+.nav_item_right .nav_link {
+    transition: all 0.3s ease;
+}
+
+.nav_list .nav_item:hover,
+.nav_item_right .nav_link:hover {
+    transform: translateY(3px);
+}
+
+/* Link */
+.logo,
+.nav_link {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav_link {
+    padding: 0.3rem 0.3rem;
+    border-radius: 4px;
+}
+
+/* Tên user */
+.nav_name {
+    font-weight: bold;
+    color: grey;
+    margin-right: 0.5rem;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.nav_search {
+    position: relative;
+    display: flex;
+    background: #fff;
+    max-width: 300px;
+    width: 90%;
+    margin: auto 1.2rem;
+    align-items: center;
+}
+
+.nav_search input{
+    flex: 1;
+    min-width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: width 0.3s ease;
+    align-items: center;
+    padding: 8px 35px 8px 12px;
+}
+
+
+
+.nav_search a {
+    position: absolute;
+    right: 10px;
+    color: #666;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav_search a:hover {
+    color: #000;
+}
+
+/* Responsive */
+
+/* Min-width: 700px */
+@media screen and (min-width: 700px) {
+    .nav {
+        height: 56px;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .nav_menu .nav_list {
+        gap: 1rem;
+    }
+    
+    .nav_right .nav_item_right {
+        gap: 1rem;
+    }
+    
+    .nav_link {
+        padding: 0.3rem 0.3rem;
+    }
+    
+    .icon {
+        font-size: 20px;
+    }
+
+    .nav_search {
+        display: none;
+    }
+}
+
+/* Max-width: 699px */
+@media screen and (max-width: 699px) {
+    .nav {
+        height: 56px;
+    }
+    
+    .logo {
+        font-size: 1.35rem;
+    }
+    
+    .nav_menu .nav_list {
+        gap: 0.75rem;
+    }
+    
+    .nav_right .nav_item_right {
+        gap: 0.75rem;
+    }
+    
+    .nav_link {
+        padding: 0.25rem 0.25rem;
+    }
+    
+    .nav_name {
+        font-size: 14px;
+    }
+    
+    .icon {
+        font-size: 19px;
+    }
+
+    .nav_search {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .nav_list {
+        display: none;
+    }
+}
+
+/* Max-width: 570px */
+@media screen and (max-width: 570px) {
+    .nav {
+        height: 52px;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+    
+    .nav_menu .nav_list {
+        gap: 0.5rem;
+    }
+    
+    .nav_right .nav_item_right {
+        gap: 0.5rem;
+    }
+    
+    .nav_link {
+        padding: 0.2rem 0.2rem;
+    }
+    
+    .nav_name {
+        display: none;
+    }
+    
+    .icon {
+        font-size: 18px;
+    }
+
+    .nav_search {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        width: 88%;
+    }
+
+    .nav_list {
+        display: none;
+    }
+}
+
+/* Min-width: 465px AND Max-width: 570px */
+@media screen and (min-width: 465px) and (max-width: 570px) {
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .nav_menu .nav_list {
+        gap: 0.6rem;
+    }
+    
+    .nav_link {
+        padding: 0.22rem 0.22rem;
+    }
+
+    .nav_search {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        width: 88%;
+    }
+
+    .nav_list {
+        display: none;
+    }
+
+}
