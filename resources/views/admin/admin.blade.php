@@ -7,12 +7,12 @@
     <title>Admin Managenment</title>
     
     <!-- CSS Files -->
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/log.css">
     <link rel="stylesheet" href="/css/notification.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/modals.css">
+    <link rel="stylesheet" href="/css/products.css">
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -21,7 +21,7 @@
     @include('header')
 
     <!-- Notification Container -->
-    <div id="notificationContainer" class="notification_container"></div>
+    <div id="notificationContainer" class="notification-container"></div>
 
     <div class="container">
         <div class="admin_layout">
@@ -79,9 +79,22 @@
 
     @include('footer')
 
+    <!-- Form ẩn để xử lý DELETE request -->
+    <form id="deleteForm" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    <!-- Include Modals -->
+    @include('modals.product-management.edit-product')
+    @include('modals.product-management.add-product')
+    @include('modals.product-management.delete-confirm')
+
     <!-- Include JavaScript Files -->
     <script src="{{asset('js/notification.js')}}"></script>
     <script src="{{asset('js/admin-menu.js')}}"></script>
+    <script src="{{asset('js/product-management.js')}}"></script>
+    <script src="{{asset('js/modal-handler.js')}}"></script>
 
 </body>
 </html>

@@ -67,6 +67,7 @@
     font-size: 14px;
     color: #333;
     line-height: 1.5;
+    word-break: break-word;
 }
 
 /* Nút đóng */
@@ -104,7 +105,62 @@
     color: #ef4444;
 }
 
-/* Responsive cho mobile */
+/* Responsive */
+
+/* Min-width: 700px */
+@media screen and (min-width: 700px) {
+    .notification-container {
+        top: 70px;
+        right: 20px;
+    }
+    
+    .notification {
+        min-width: 300px;
+        max-width: 400px;
+        padding: 16px 20px;
+    }
+    
+    .notification-icon {
+        font-size: 24px;
+    }
+    
+    .notification-content {
+        font-size: 14px;
+    }
+    
+    .notification-close {
+        font-size: 20px;
+    }
+}
+
+/* Max-width: 699px */
+@media screen and (max-width: 699px) {
+    .notification-container {
+        top: 65px;
+        right: 15px;
+        left: 15px;
+    }
+    
+    .notification {
+        min-width: auto;
+        max-width: 100%;
+        padding: 14px 18px;
+    }
+    
+    .notification-icon {
+        font-size: 22px;
+    }
+    
+    .notification-content {
+        font-size: 13.5px;
+    }
+    
+    .notification-close {
+        font-size: 19px;
+    }
+}
+
+/* Max-width: 570px */
 @media screen and (max-width: 570px) {
     .notification-container {
         top: 60px;
@@ -115,7 +171,8 @@
     .notification {
         min-width: auto;
         max-width: 100%;
-        padding: 14px 16px;
+        padding: 12px 16px;
+        gap: 10px;
     }
     
     .notification-icon {
@@ -128,5 +185,31 @@
     
     .notification-close {
         font-size: 18px;
+    }
+}
+
+/* Min-width: 465px AND Max-width: 570px */
+@media screen and (min-width: 465px) and (max-width: 570px) {
+    .notification-container {
+        top: 62px;
+        right: 12px;
+        left: 12px;
+    }
+    
+    .notification {
+        padding: 13px 17px;
+        gap: 11px;
+    }
+    
+    .notification-icon {
+        font-size: 21px;
+    }
+    
+    .notification-content {
+        font-size: 13.25px;
+    }
+    
+    .notification-close {
+        font-size: 18.5px;
     }
 }

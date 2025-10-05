@@ -19,14 +19,6 @@ class AuthController extends Controller
         return view('dashboard');
     }
 
-        /*
-     *** Func trả về page admin.
-     */
-    public function admin()
-    {
-        return view('admin');
-    }
-
     /*
      *** Func trả về page register.
      */
@@ -43,7 +35,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:2',
+            'password' => 'required|string|min:6',
         ]);
 
         $user = User::create([

@@ -1,73 +1,63 @@
-// notification.js
-
-// Tạo container khi trang load
-document.addEventListener('DOMContentLoaded', function() {
-    if (!document.querySelector('.notification-container')) {
-        const container = document.createElement('div');
-        container.className = 'notification-container';
-        document.body.appendChild(container);
-    }
-});
-
-// Hàm hiển thị thông báo
-function showNotification(message, type = 'success') {
-    // Tạo container nếu chưa có
-    let container = document.querySelector('.notification-container');
+/*
+*** Function hiển thị notification
+*** @param {string} message - Nội dung thông báo
+*** @param {string} type - 'success' hoặc 'error'
+*** @param {number} duration - Thời gian hiển thị (ms)
+*/
+function showNotification(message, type = 'success', duration = 3500) {
+    // Lấy hoặc tạo container
+    let container = document.getElementById('notificationContainer');
     if (!container) {
         container = document.createElement('div');
+        container.id = 'notificationContainer';
         container.className = 'notification-container';
         document.body.appendChild(container);
     }
-
-    // Tạo phần tử thông báo
+    
+    // Icon tương ứng với từng loại
+    const icons = {
+        success: 'ri-checkbox-circle-line',
+        error: 'ri-close-circle-line'
+    };
+    
+    // Tạo notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
-
-    // Icon tùy theo loại
-    const icon = type === 'success' 
-        ? '<i class="ri-checkbox-circle-line"></i>' 
-        : '<i class="ri-error-warning-line"></i>';
-
-    // Nội dung HTML
+    
     notification.innerHTML = `
-        <div class="notification-icon">
-            ${icon}
-        </div>
-        <div class="notification-content">
-            ${message}
-        </div>
-        <button class="notification-close">
+        <i class="${icons[type]} notification-icon"></i>
+        <div class="notification-content">${message}</div>
+        <button class="notification-close" onclick="closeNotification(this)">
             <i class="ri-close-line"></i>
         </button>
     `;
-
-    // Thêm vào đầu container (thông báo mới ở trên)
-    container.insertBefore(notification, container.firstChild);
-
-    // Xử lý nút đóng
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', function() {
-        closeNotification(notification);
-    });
-
-    // Tự động đóng sau 4 giây
-    setTimeout(function() {
-        closeNotification(notification);
-    }, 4000);
-}
-
-// Hàm đóng thông báo
-function closeNotification(notification) {
-    // Thêm class closing để chạy animation
-    notification.classList.add('closing');
     
-    // Xóa khỏi DOM sau khi animation kết thúc
+    // Thêm vào đầu container (notification mới ở trên)
+    container.insertBefore(notification, container.firstChild);
+    
+    // Tự động xóa sau duration
     setTimeout(function() {
-        if (notification.parentElement) {
-            notification.parentElement.removeChild(notification);
-        }
-    }, 300);
+        closeNotification(notification);
+    }, duration);
 }
 
-// Export functions để sử dụng
-window.showNotification = showNotification;
+/*
+*** Function đóng notification
+*** @param {Element} element - Button hoặc notification element
+*/
+function closeNotification(element) {
+    // Nếu element là button, lấy parent notification
+    const notification = element.classList 
+        ? (element.classList.contains('notification') ? element : element.closest('.notification'))
+        : element.closest('.notification');
+    
+    if (notification) {
+        // Thêm class closing để animation
+        notification.classList.add('closing');
+        
+        // Xóa sau khi animation kết thúc
+        setTimeout(function() {
+            notification.remove();
+        }, 500);
+    }
+}

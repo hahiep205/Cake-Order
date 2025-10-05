@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+
 
 Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
@@ -24,3 +26,22 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 
 Route::get('admin', [AuthController::class, 'admin'])->name('admin')->middleware('auth');
 // Define route get tới admin, gọi func admin trong AuthController để hiển thị form cho admin.
+
+/*
+|------------------------------- Admin Routes ---------------------------------------
+*/
+Route::middleware(['auth'])->prefix('admin')->group(function() {
+    
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    // Route hiển thị trang admin với danh sách products
+    
+    Route::post('/products/store', [AdminController::class, 'storeProduct'])->name('admin.products.store');
+    // Route thêm product mới
+    
+    Route::put('/products/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+    // Route update product
+    
+    Route::delete('/products/{id}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
+    // Route delete product
+    
+});

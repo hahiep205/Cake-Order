@@ -34,11 +34,19 @@
 
                 @if(Auth::check())
 
-                    <li class="nav_item nav_item_right">
-                        <span class="nav_name">{{ auth()->user()->name }}</span>
-                        <a href="" class="nav_link"><i class="ri-user-settings-line icon"></i></a>
-                        <a href="{{ route('logout') }}" class="nav_link"><i class="ri-logout-box-r-line icon"></i></a>
-                    </li>
+                    @if(auth()->user()->isUser())
+                        <li class="nav_item nav_item_right">
+                            <span class="nav_name">{{ auth()->user()->name }}</span>
+                            <a href="" class="nav_link"><i class="ri-user-settings-line icon"></i></a>
+                            <a href="{{ route('logout') }}" class="nav_link"><i class="ri-logout-box-r-line icon"></i></a>
+                        </li>
+                    @else
+                        <li class="nav_item nav_item_right">
+                            <span class="nav_name">Welcome {{ auth()->user()->name }}!</span>
+                            <a href="{{ route('logout') }}" class="nav_link"><i class="ri-logout-box-r-line icon"></i></a>
+                        </li>
+                    @endif
+                    
                 @else
                     <li class="nav_item nav_item_right">
                         <a href="/login" class="nav_link">Login</a>
