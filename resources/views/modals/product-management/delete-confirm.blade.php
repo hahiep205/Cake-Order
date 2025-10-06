@@ -16,10 +16,10 @@
         </div>
 
         <div class="modal_footer">
-            <button type="button" class="btn_cancel" onclick="closeDeleteModal()">
+            <button type="button" class="btn_cancel pacifico" onclick="closeDeleteModal()">
                 Cancel
             </button>
-            <button type="button" class="btn_delete_confirm" onclick="confirmDelete()">
+            <button type="button" class="btn_delete_confirm pacifico" onclick="confirmDelete()">
                 Delete
             </button>
         </div>

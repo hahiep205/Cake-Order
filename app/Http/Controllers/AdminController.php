@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         // Check user
         if (auth()->user()->isUser()) {
-            return redirect()->route('dashboard')->with('error', 'Access failed to admin page.');
+            return redirect()->route('home')->with('error', 'Access failed to admin page.');
         }
 
         // Lấy tất cả products từ database

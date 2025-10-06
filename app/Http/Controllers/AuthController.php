@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard');
+        return view('home');
     }
 
     /*
@@ -49,7 +49,7 @@ class AuthController extends Controller
 
         $user->createSession();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
     /*
@@ -72,7 +72,7 @@ class AuthController extends Controller
             if (auth()->user()->isAdmin()) {
                 return redirect()->route('admin');
             } else {
-                return redirect()->route('dashboard');
+                return redirect()->route('home');
             }
         }
         return redirect()->back()->withErrors(['email' => 'Email or password is incorrect.']);
@@ -89,7 +89,7 @@ class AuthController extends Controller
 
         auth()->logout();
         session()->flush();
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
 }

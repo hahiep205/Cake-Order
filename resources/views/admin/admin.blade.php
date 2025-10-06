@@ -16,7 +16,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-<body class="admin_page">
+<body class="admin_page pacifico">
 
     @include('header')
 

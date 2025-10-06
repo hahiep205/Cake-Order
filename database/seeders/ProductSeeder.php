@@ -56,13 +56,13 @@ class ProductSeeder extends Seeder
             'product_name' => 'Choco Oreo Salty Ice Cake',
             'price' => 22.99,
             'stock' => 15,
-            'description' => 'The cake base is soft and rich in fresh chocolate flavor, with creamy whipping cream and Oreo.',
+            'description' => 'The cake base is soft and rich in fresh chocolate flavor, with whipping cream.',
             'image' => 'cake5-1.jpg'
         ]);
 
         Product::create([
             'product_id' => 'PTLCC-2509',
-            'product_name' => 'Pink Tea & Lemon Cheese Cake',
+            'product_name' => 'Pink Tea & Lemon Cheese',
             'price' => 22.99,
             'stock' => 15,
             'description' => 'Lemon cheesecake with rose tea, an appealing sweet and sour flavor.',
@@ -71,7 +71,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'product_id' => 'BVDC-2509',
-            'product_name' => 'Blueberry Vanilla Dream Cake',
+            'product_name' => 'Blueberry Vanilla Dream',
             'price' => 22.99,
             'stock' => 15,
             'description' => 'A fluffy layer of vanilla cream blended with fresh blueberries, sweet and poetic.',

@@ -49,10 +49,10 @@
             </div>
 
             <div class="modal_footer">
-                <button type="button" class="btn_cancel" onclick="closeEditModal()">
+                <button type="button" class="btn_cancel pacifico" onclick="closeEditModal()">
                     Cancel
                 </button>
-                <button type="submit" class="btn_save">
+                <button type="submit" class="btn_save pacifico">
                     Save Changes
                 </button>
             </div>

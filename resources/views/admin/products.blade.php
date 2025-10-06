@@ -1,7 +1,7 @@
 <!-- Section: User Management -->
 <div class="section_header">
     <h2><i class="ri-cake-line"></i> Product Management</h2>
-    <button class="btn_add" onclick="openAddModal()">
+    <button class="btn_add pacifico" onclick="openAddModal()">
         Add Product
     </button>
 </div>
@@ -73,10 +73,10 @@
                             @endif
                         </td>
                         <td>
-                            <button class="btn_action btn_edit" onclick="editProduct({{ $product->id }})">
+                            <button class="btn_action btn_edit pacifico" onclick="editProduct({{ $product->id }})">
                                 Edit
                             </button>
-                            <button class="btn_action btn_delete" onclick="deleteProduct({{ $product->id }}, '{{ $product->product_name }}')">
+                            <button class="btn_action btn_delete pacifico" onclick="deleteProduct({{ $product->id }}, '{{ $product->product_name }}')">
                                 Delete
                             </button>
                         </td>
