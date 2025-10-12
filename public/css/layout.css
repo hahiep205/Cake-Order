@@ -1,189 +1,198 @@
-/* =============== Base CSS =============== */
+/* <=========================> BASE <=========================> */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    font: 16px/1.6 Arial, sans-serif;
-    color: #222;
-    padding-top: 56px;
+    overflow-x: hidden;
 }
 
-.container {
-    max-width: 1234px;
-    margin: 0 auto;
-    padding: 1rem;
-}
 
-.pacifico {
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
+/* <=========================> HEADER <=========================> */
 
-/* =============== Header CSS =============== */
-
-.header {
-    position: fixed;
-    width: 100%;
-    background: #fff;
+header {
+    z-index: 999;
     top: 0;
-    z-index: 70;
-    border-bottom: 1px solid #eaeaea;
+    left: 0;
+    width: 100%;
+    display: flex;
+    /* padding: 15px 50px; */
+    transition: 0.5s ease;
+    position: fixed;
+    padding: 0 50px;
 }
 
-.nav {
-    height: 56px;
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Logo */
-.logo {
-    font-size: 1.5rem;
-    padding: 0 0.18rem;
-    font-weight: bold;
-    color: #5ba4fc;
-}
-
-/* Menu center */
-.nav_menu .nav_list {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-    padding: 0 1rem;
-}
-
-/* Menu phải */
-.nav_right .nav_item_right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-}
-
-.nav_list .nav_item,
-.nav_item_right .nav_link {
-    transition: all 0.3s ease;
-}
-
-.nav_list .nav_item:hover,
-.nav_item_right .nav_link:hover {
-    transform: translateY(-3px);
-}
-
-/* Link */
-.logo,
-.nav_link {
+header .brand {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
     text-decoration: none;
-    color: #222;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    flex-shrink: 0;
+    transition: 0.3s ease;
 }
 
-.nav_link {
-    padding: 0.3rem 0.3rem;
-    border-radius: 4px;
-}
-
-/* Tên user */
-.nav_name {
-    font-weight: bold;
-    color: grey;
-    margin-right: 0.5rem;
-}
-
-.icon {
-    font-size: 20px;
-}
-
-/* Nav search */
-.nav_search {
+header .nav {
     position: relative;
+    flex-grow: 1;
     display: flex;
-    background: #fff;
-    max-width: 300px;
-    width: 90%;
-    margin: 0 1.2rem;
-    justify-content: center; /* căn giữa ngang */
+    justify-content: center;
     align-items: center;
+    margin-left: 30px;
 }
 
-.nav_search input{
-    flex: 1;
-    min-width: 100px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    outline: none;
-    transition: width 0.3s ease;
+header .nav .nav-items {
+    display: flex;
     align-items: center;
-    padding: 8px 35px 8px 12px;
+    flex-grow: 1;
+    justify-content: center;
 }
 
-.nav_search a {
+header .nav .nav-logs {
+    margin-left: auto;
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+header .nav .nav-items a {
+    position: relative;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.3s ease;
+}
+
+header .nav .nav-logs a {
+    position: relative;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.3s ease;
+}
+
+header .nav .nav-items a:before {
+    content: '';
     position: absolute;
-    right: 10px;
-    color: #666;
-    font-size: 16px;
-    cursor: pointer;
-    text-decoration: none;
+    background: #fff;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease;
+}
+
+header .nav .nav-logs a:before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease;
+}
+
+header .nav .nav-items a:hover:before {
+    width: 100%
+}
+
+header .nav .nav-logs a:hover:before {
+    width: 100%
+}
+
+/* Underline effect khi scroll */
+header.scrolled .nav .nav-items a:before,
+header.scrolled .nav .nav-logs a:before {
+    background: #222;
+}
+
+/* Menu button cho header scrolled/admin */
+header.scrolled .menu-btn {
+    background: url("/img/menu.png") no-repeat;
+    background-size: 30px;
+    background-position: center;
+    filter: brightness(0);
+    /* Chuyển icon sang màu đen */
+}
+
+header.scrolled .menu-btn.active {
+    background: url("/img/close.png") no-repeat;
+    background-size: 25px;
+    background-position: center;
+    filter: brightness(0);
+    /* Chuyển icon sang màu đen */
+}
+
+/*============================ Icon của nav_logs ==================================*/
+
+/* Bỏ underline effect cho icon giỏ hàng */
+header .nav .nav-logs a:has(i.icon):before {
+    display: none;
+}
+
+/* Cho cả trạng thái scrolled */
+header.scrolled .nav .nav-logs a:has(i.icon):before {
+    display: none;
+}
+
+/* Hover thẻ i trong nav-logs */
+header .nav .nav-logs i {
+    display: inline-block;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+header .nav .nav-logs i:hover {
+    transform: scale(1.2);
+}
+
+header .container .brand:hover {
+    transform: scale(1.1);
+}
+
+/* <=========================> FOOTER <=========================> */
+
+footer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 0.3s ease;
+    background-color: #fff;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.nav_search a:hover {
-    color: #000;
-}
-
-/* =============== Footer CSS =============== */
-
-.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    border-top: 1px solid #888;
     padding: 2rem 0;
-    background: #f5f5f5;
-    border-top: 1px solid #e2e2e2;
-}
-
-.footer_container {
-    display: grid;
-    gap: 2rem;
-    max-width: 1234px;
-}
-
-.footer_content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    min-width: 450px;
-}
-
-.footer_title {
-
-}
-
-.footer_links {
-    list-style: none;
-    display: grid;
-    gap: 0.25rem;
-}
-
-.footer_followus {
-    display: inline;
-}
-
-.footer_icon {
-    font-size: 24px;
-    padding-right: 0.35rem;
-    color: #222;
-}
-
-.footer_link {
-    color: #222;
-    text-decoration: none;
 }
 
 .footer_info {
@@ -196,179 +205,143 @@ body {
     color: #888;
 }
 
-.footer a{
-    line-height: 150%;
-    transition: 0.3s all;
-    display: inline-block;
+footer .brand {
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
-.footer a:hover {
-    transform: translateX(5px);
+
+/* <=========================> RESPONSIVE <=========================> */
+
+@media (min-width: 1041px) and (max-width: 1200px) {
+    .home .content {
+        padding: 0 50px;
+    }
 }
 
-/* ===== Responsive ===== */
 
-/* Min-width: 800px */
-@media screen and (min-width: 800px) {
-    body {
-        font-size: 16px;
+@media (min-width: 1201px) {
+    .home .content {
+        padding: 0;
     }
-    .container {
-        padding: 1.5rem;
+}
+
+@media (max-width: 1040px) {
+    header {
+        padding: 0 32px;
     }
-    .nav {
-        height: 56px;
+
+    footer {
+        padding: 0 32px;
     }
-    .logo {
-        font-size: 1.5rem;
+
+    section {
+        padding: 100px 20px;
     }
-    .nav_menu .nav_list {
+
+    .home .media-icons {
+        right: 20px;
+    }
+
+    header .nav .nav-items {
+        display: none;
+    }
+
+    header .nav.active {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
         display: flex;
-        gap: 1rem;
-        font-size: 13.5px;
+        justify-content: center;
+        align-items: center;
+        background: rgba(1, 1, 1, 0.5);
     }
 
-    .nav_search {
+    header .nav .nav-items a {
+        color: #fff;
+        font-size: 1em;
+        margin: 20px;
+    }
+
+    header .nav .nav-logs a {
+        color: #fff;
+        font-size: 1em;
+        margin: 20px;
+    }
+
+    header .nav.active .nav-items {
+        background-color: transparent;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        width: 60%;
+        max-width: 600px;
+        margin: 20px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+    }
+
+    header .nav.active .nav-logs {
+        background-color: transparent;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        width: 60%;
+        max-width: 600px;
+        margin: 20px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+    }
+
+    .menu-btn {
         display: block;
-        font-size: 20px;
-        font-weight: bold;
+        background: url("/img/menu.png") no-repeat;
+        background-size: 30px;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: 0.3s ease;
     }
 
-    .nav_right .nav_item_right {
-        gap: 1rem;
-        font-size: 13.5px;
-    }
-    .nav_link {
-        padding: 0.3rem 0.3rem;
-    }
-    .icon {
-        font-size: 20px;
+    .menu-btn.active {
+        z-index: 999;
+        background: url("/img/close.png") no-repeat;
+        background-size: 25px;
+        background-position: center;
+        transition: 0.3s ease;
     }
 
-    .footer_container {
-        grid-template-columns: repeat(2, 1fr);
+    /* Menu button cho header scrolled/admin - màu đen */
+    header.scrolled .menu-btn,
+    .admin_page header .menu-btn {
+        filter: brightness(0);
     }
-    
-    .footer_content {
-        grid-template-columns: repeat(4, 1fr);
-        min-width: auto;
-    }
-    
-    .footer_info {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 3rem;
+
+    header.scrolled .menu-btn.active,
+    .admin_page header .menu-btn.active {
+        filter: brightness(0);
     }
 }
 
-/* Max-width: 699px */
-@media screen and (max-width: 799px) {
-    body {
-        font-size: 15px;
-    }
-    .container {
-        padding: 1rem;
-    }
-    .nav {
-        height: 56px;
-    }
-    .logo {
-        font-size: 1.35rem;
-    }
-    .nav_menu .nav_list {
-        gap: 0.75rem;
-        font-size: 13px;
-    }
-    .nav_right .nav_item_right {
-        gap: 0.75rem;
-        font-size: 13px;
-    }
-    .nav_link {
-        padding: 0.25rem 0.25rem;
-    }
-    .nav_name {
-        font-size: 14px;
-    }
-    .icon {
-        font-size: 19px;
-    }
-
-    .nav_search {
-        display: none;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-}
-
-/* Max-width: 570px */
-@media screen and (max-width: 570px) {
-    body {
-        font-size: 14px;
-        padding-top: 52px;
-    }
-    .container {
-        padding: 0.75rem;
-    }
-    .nav {
-        height: 52px;
-    }
-    .logo {
-        font-size: 1.25rem;
-    }
-    .nav_menu .nav_list {
-        gap: 0.5rem;
-        font-size: 3px;
-    }
-    .nav_right .nav_item_right {
-        gap: 0.5rem;
-        font-size: 13px;
-    }
-    .nav_link {
-        padding: 0.2rem 0.2rem;
-    }
-    .nav_name {
+@media (max-width: 768px) {
+    header .nav {
         display: none;
     }
-    .icon {
-        font-size: 18px;
-    }
 
-    .nav_search {
-        display: none;
-        font-size: 20px;
-        font-weight: bold;
-        width: 88%;
+    .home .content {
+        padding: 0;
     }
-
-}
-
-/* Min-width: 465px AND Max-width: 570px */
-@media screen and (min-width: 465px) and (max-width: 570px) {
-    body {
-        font-size: 14.5px;
-    }
-    .container {
-        padding: 1rem;
-    }
-    .logo {
-        font-size: 1.3rem;
-    }
-    .nav_menu .nav_list {
-        gap: 0.6rem;
-    }
-    .nav_link {
-        padding: 0.22rem 0.22rem;
-    }
-    .nav_search {
-        display: none;
-        font-size: 20px;
-        font-weight: bold;
-        width: 88%;
-    }
-
-    .footer_content {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
 }

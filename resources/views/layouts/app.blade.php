@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>@yield('title', 'CAKE Order')</title>
+    <title>@yield('title', 'Cake Order')</title>
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="/css/layout.css">
@@ -13,25 +14,18 @@
     <link rel="stylesheet" href="/css/notification.css">
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/modals.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/admin-management.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-
-    @yield('styles')
-
+    @stack('styles')
 </head>
 
 <body>
 
-    <!-- Header -->
     @include('header')
 
-    <!-- Main Content -->
-    <main>
-        @yield('content')
-    </main>
+    @yield('content')
 
-    <!-- Footer -->
     @include('footer')
 
     <script src="/js/notification.js"></script>

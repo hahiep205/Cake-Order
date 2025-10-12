@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Managenment</title>
-    
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/log.css">
     <link rel="stylesheet" href="/css/notification.css">
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/modals.css">
-    <link rel="stylesheet" href="/css/products.css">
-    
+    <link rel="stylesheet" href="/css/admin-management.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body class="admin_page pacifico">
 
     @include('header')
@@ -25,7 +28,7 @@
 
     <div class="container">
         <div class="admin_layout">
-            
+
             <!-- SIDEBAR -->
             <div class="admin_sidebar">
                 <h3 class="sidebar_title">ADMIN PANEL</h3>
@@ -51,7 +54,7 @@
 
             <!-- MAIN CONTENT -->
             <div class="admin_content">
-                
+
                 <!-- Section: Product Management -->
                 <div class="content_section active" id="section_products">
                     @include('admin.products')
@@ -96,5 +99,31 @@
     <script src="{{asset('js/product-management.js')}}"></script>
     <script src="{{asset('js/modal-handler.js')}}"></script>
 
+    <script>
+        // Js for admin header - auto scrolled state
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+
+            // Tự động áp dụng trạng thái scrolled cho trang admin
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            header.style.padding = '0';
+
+            // Đổi màu chữ sang tối
+            const brand = header.querySelector('.brand');
+            const navLinks = header.querySelectorAll('.nav-items a, .nav-logs a, .nav_name');
+
+            if (brand) brand.style.color = '#222';
+            navLinks.forEach(link => {
+                link.style.color = '#222';
+            });
+
+            // Thêm class để đổi màu underline effect
+            header.classList.add('scrolled');
+        });
+    </script>
+
 </body>
+
 </html>

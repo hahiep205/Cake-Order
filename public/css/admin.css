@@ -1,35 +1,28 @@
-/*
-*** ADMIN - Layout, Sidebar, Content
-*/
+/* <=========================> ADMIN - Layout, Sidebar, Content <=========================> */
 
-/* Background với gradient */
 .admin_page {
-    background: linear-gradient(to bottom left, #f5f5f5 0%, #ffffff 72%);
-    min-height: 100vh;
+    margin-top: 5.5rem;
 }
 
-/* Container full width cho admin */
 .admin_page .container {
     max-width: 100%;
     width: 100%;
-    padding: 1rem 2rem;
+    margin: 1rem;
 }
 
-/* Admin Layout */
 .admin_layout {
     display: flex;
     gap: 0;
     min-height: calc(100vh - 56px - 200px);
-    margin: 2rem 0;
+    margin: 2rem;
     border: 1px solid #e8e8e8;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Sidebar */
 .admin_sidebar {
-    width: 17%;
+    width: 18%;
     background: #fafafa;
     border-right: 1px solid #eeeeee;
     padding: 1.5rem 1rem;
@@ -93,17 +86,23 @@
 
 /* Main Content */
 .admin_content {
-    width: 83%;
+    width: 82%;
     background: #ffffff;
     padding: 2rem;
 }
 
 .content_section {
     display: none;
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
 }
 
 .content_section.active {
     display: block;
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
 }
 
 .section_header {

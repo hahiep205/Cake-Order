@@ -5,10 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-//Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 

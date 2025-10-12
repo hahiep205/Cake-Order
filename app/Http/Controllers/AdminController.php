@@ -16,13 +16,14 @@ class AdminController extends Controller
     {
         // Check user
         if (auth()->user()->isUser()) {
-            return redirect()->route('home')->with('error', 'Access failed to admin page.');
+            return redirect()->route('dashboard')->with('error', 'Access failed to admin page.');
         }
 
-        // Lấy tất cả products từ database
+        // Lấy tất cả products và users từ database
         $products = Product::all();
+        $users = User::all();
 
-        return view('admin.admin', compact('products'));
+        return view('admin.admin', compact('products', 'users'));
     }
 
     /*
@@ -55,7 +56,7 @@ class AdminController extends Controller
             ]);
 
             return redirect()->route('admin')->with('success', 'Product updated successfully!');
-            
+
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', 'Failed to update product. Please try again.');
         }
@@ -72,7 +73,7 @@ class AdminController extends Controller
             $product->delete();
 
             return redirect()->route('admin')->with('success', 'Product deleted successfully!');
-            
+
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', 'Failed to delete product. Please try again.');
         }
@@ -105,10 +106,10 @@ class AdminController extends Controller
             ]);
 
             return redirect()->route('admin')->with('success', 'Product added successfully!');
-            
+
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->route('admin')->with('error', 'Please check your input. Product ID might already exist.');
-            
+
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', 'Failed to add product. Please try again.');
         }

@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        return view('home');
+        return view('dashboard');
     }
 
     /*
@@ -49,20 +49,20 @@ class AuthController extends Controller
 
         $user->createSession();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     /*
-    *** Func trả về page login
-    */
+     *** Func trả về page login
+     */
     public function login()
     {
         return view('login');
     }
 
     /*
-    *** Func check account và tạo session ròi redirect tới route với role tương ứng.
-    */
+     *** Func check account và tạo session ròi redirect tới route với role tương ứng.
+     */
     public function logined(Request $request)
     {
         if (auth()->attempt($request->only('email', 'password'))) {
@@ -72,15 +72,15 @@ class AuthController extends Controller
             if (auth()->user()->isAdmin()) {
                 return redirect()->route('admin');
             } else {
-                return redirect()->route('home');
+                return redirect()->route('dashboard');
             }
         }
         return redirect()->back()->withErrors(['email' => 'Email or password is incorrect.']);
     }
 
     /*
-    *** Func logout, xóa session token khi logout.
-    */
+     *** Func logout, xóa session token khi logout.
+     */
     public function logout()
     {
         if (auth()->check()) {
@@ -89,7 +89,7 @@ class AuthController extends Controller
 
         auth()->logout();
         session()->flush();
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
 }

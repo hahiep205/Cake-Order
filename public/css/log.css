@@ -1,6 +1,4 @@
-/*
-*** Login & Register - Material Design
-*/
+/* <=========================> Login & Register <=========================> */
 
 /* Section container */
 #log {
@@ -10,6 +8,7 @@
     align-items: center;
     padding: 2rem 1rem;
     background: #fcfcfc;
+    margin-top: 5rem;
 }
 
 /* Title */
@@ -132,11 +131,11 @@ input[type="name"]:focus {
         max-width: 450px;
         padding: 3rem;
     }
-    
+
     .section_title {
         font-size: 2.25rem;
     }
-    
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
@@ -144,7 +143,7 @@ input[type="name"]:focus {
         padding: 10px 14px;
         font-size: 14px;
     }
-    
+
     .log_button {
         padding: 10px;
         font-size: 14px;
@@ -157,11 +156,11 @@ input[type="name"]:focus {
         max-width: 400px;
         padding: 2.5rem;
     }
-    
+
     .section_title {
         font-size: 2rem;
     }
-    
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
@@ -169,7 +168,7 @@ input[type="name"]:focus {
         padding: 8px 12px;
         font-size: 14px;
     }
-    
+
     .log_button {
         padding: 12px;
         font-size: 14px;
@@ -181,27 +180,27 @@ input[type="name"]:focus {
     #log {
         padding: 1.5rem 0.75rem;
     }
-    
+
     .log_container {
         max-width: 100%;
         padding: 2rem 1.5rem;
         margin: 0 0.5rem;
     }
-    
+
     .section_title {
         font-size: 1.75rem;
         margin-bottom: 1.75rem;
     }
-    
+
     .form_group {
         margin-bottom: 1.25rem;
     }
-    
+
     .form_group label {
         font-size: 13px;
         margin-bottom: 0.4rem;
     }
-    
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
@@ -209,12 +208,12 @@ input[type="name"]:focus {
         padding: 7px 10px;
         font-size: 13px;
     }
-    
+
     .log_button {
         padding: 10px;
         font-size: 13px;
     }
-    
+
     .log_link_text {
         font-size: 13px;
     }
@@ -226,11 +225,11 @@ input[type="name"]:focus {
         padding: 2.25rem 2rem;
         margin: 0 1rem;
     }
-    
+
     .section_title {
         font-size: 1.85rem;
     }
-    
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
@@ -238,7 +237,7 @@ input[type="name"]:focus {
         padding: 8px 11px;
         font-size: 13.5px;
     }
-    
+
     .log_button {
         padding: 11px;
         font-size: 13.5px;
