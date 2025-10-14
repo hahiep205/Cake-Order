@@ -7,7 +7,10 @@
 .admin_page .container {
     max-width: 100%;
     width: 100%;
-    margin: 1rem;
+}
+
+.admin_page header .container {
+    padding: 0 2rem;
 }
 
 .admin_layout {
@@ -22,7 +25,7 @@
 }
 
 .admin_sidebar {
-    width: 18%;
+    width: 19%;
     background: #fafafa;
     border-right: 1px solid #eeeeee;
     padding: 1.5rem 1rem;
@@ -86,7 +89,7 @@
 
 /* Main Content */
 .admin_content {
-    width: 82%;
+    width: 81%;
     background: #ffffff;
     padding: 2rem;
 }

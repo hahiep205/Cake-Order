@@ -1,6 +1,5 @@
-/*
-*** MODALS - Edit, Add, Delete
-*/
+
+/* <=========================> MODALS - Edit, Add, Delete <=========================> */
 
 .modal {
     display: none;
@@ -13,7 +12,7 @@
     z-index: 1000;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease;
+    animation: none;
 }
 
 .modal.show {
@@ -28,7 +27,7 @@
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    animation: slideDown 0.3s ease;
+    animation: none;
 }
 
 .modal_content_small {
@@ -211,5 +210,33 @@
 .warning_text {
     font-size: 0.875rem;
     color: #757575;
+    font-style: italic;
+}
+
+/* Select Dropdown Style */
+.admin_form_group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #222;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin_form_group select:focus {
+    outline: none;
+    border-color: #5ba4fc;
+    box-shadow: 0 0 0 3px rgba(91, 164, 252, 0.1);
+}
+
+/* Optional Label */
+.optional {
+    font-size: 0.85rem;
+    color: #999;
+    font-weight: 400;
     font-style: italic;
 }

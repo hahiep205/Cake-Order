@@ -48,10 +48,10 @@
             </div>
 
             <div class="modal_footer">
-                <button type="button" class="btn_cancel pacifico" onclick="closeAddModal()">
+                <button type="button" class="btn_cancel" onclick="closeAddModal()">
                     Cancel
                 </button>
-                <button type="submit" class="btn_save pacifico">
+                <button type="submit" class="btn_save">
                     Add Product
                 </button>
             </div>

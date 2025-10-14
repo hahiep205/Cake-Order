@@ -1,6 +1,5 @@
-/*
-*** PRODUCTS - Table & Actions
-*/
+
+/* <=========================> PRODUCTS Management <=========================> */
 
 .products_table_wrapper {
     overflow-x: auto;
@@ -145,4 +144,28 @@
 .empty_state p {
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
+}
+
+
+/* <=========================> USERS Management <=========================> */
+
+/* Role Badge Styles */
+.role_badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role_admin {
+    background: #5ba4fc;
+    color: #ffffff;
+}
+
+.role_user {
+    background: #e0e0e0;
+    color: #757575;
 }

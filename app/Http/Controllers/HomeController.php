@@ -11,6 +11,6 @@ class HomeController extends Controller
     {
         $products = Product::all();
 
-        return view('home', compact('products'));
+        return view('dashboard', compact('products'));
     }
 }

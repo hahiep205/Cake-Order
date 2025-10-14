@@ -8,10 +8,10 @@
         <div class="nav">
 
             <div class="nav-items">
-                <a href="#home">Home</a>
-                <a href="#products">Products</a>
-                <a href="#about">About</a>
-                <a href="#">Reviews</a>
+                <a href="dashboard#home">Home</a>
+                <a href="dashboard#products">Products</a>
+                <a href="dashboard#about">About</a>
+                <a href="dashboard">Reviews</a>
             </div>
 
             <div class="nav-logs">
@@ -20,9 +20,9 @@
 
                         <div class="">
                             {{-- <span class="nav_name">{{ auth()->user()->name }}</span> --}}
-                            <a href="#home"><i class="ri-shopping-cart-line icon"></i></a>
-                            <a href="#home"><i class="ri-user-line icon"></i></a>
-                            <a href="{{ route('logout') }}"><i class="ri-logout-box-r-line icon"></i></a>
+                            <a href="{{ route('cart') }}"><i class="ri-shopping-cart-line icon"></i></a>
+                            <a href="{{ route('profile') }}"><i class="ri-user-line icon"></i></a>
+                            <a href="{{ route('logout') }}" ><i class="ri-logout-box-r-line icon"></i></a>                                
                         </div>
 
                     @else
@@ -30,9 +30,9 @@
                         <div class="">
                             {{-- <span class="nav_name">{{ auth()->user()->name }}</span> --}}
                             <a href="{{ route('admin') }}"><i class="ri-user-star-line icon"></i></a>
-                            <a href="{{ route('logout') }}"><i class="ri-logout-box-r-line icon"></i></a>
+                            <a href="{{ route('logout') }}"><i class="ri-logout-box-r-line icon"></i></a>                                
                         </div>
-
+                        
                     @endif
                 @else
 

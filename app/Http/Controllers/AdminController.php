@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -56,7 +57,7 @@ class AdminController extends Controller
             ]);
 
             return redirect()->route('admin')->with('success', 'Product updated successfully!');
-
+            
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', 'Failed to update product. Please try again.');
         }
@@ -73,7 +74,7 @@ class AdminController extends Controller
             $product->delete();
 
             return redirect()->route('admin')->with('success', 'Product deleted successfully!');
-
+            
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', 'Failed to delete product. Please try again.');
         }
@@ -106,12 +107,114 @@ class AdminController extends Controller
             ]);
 
             return redirect()->route('admin')->with('success', 'Product added successfully!');
-
+            
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->route('admin')->with('error', 'Please check your input. Product ID might already exist.');
-
+            
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', 'Failed to add product. Please try again.');
         }
     }
+
+    /*
+    *** Func xử lý thêm user mới
+    */
+    public function storeUser(Request $request)
+    {
+        try {
+            // Validate input
+            $request->validate([
+                'name' => 'required|string|max:50',
+                'email' => 'required|email|max:50|unique:users,email',
+                'phone' => 'nullable|numeric|digits:10',
+                'address' => 'nullable|string',
+                'role' => 'required|in:user,admin',
+                'password' => 'required|string|min:6',
+            ]);
+
+            // Tạo user mới
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'role' => $request->role,
+                'password' => Hash::make($request->password),
+            ]);
+
+            return redirect()->route('admin', ['section' => 'users'])->with('success', 'User added successfully!');
+            
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->route('admin', ['section' => 'users'])->with('error', 'Please check your input. Email might already exist.');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('admin', ['section' => 'users'])->with('error', 'Failed to add user. Please try again.');
+        }
+    }
+
+    /*
+    *** Func xử lý update user
+    */
+    public function updateUser(Request $request, $id)
+    {
+        try {
+            // Tìm user cần update
+            $user = User::findOrFail($id);
+
+            // Validate input
+            $request->validate([
+                'name' => 'required|string|max:50',
+                'email' => 'required|email|max:50|unique:users,email,' . $id,
+                'phone' => 'nullable|numeric|digits:10',
+                'address' => 'nullable|string',
+                'role' => 'required|in:user,admin',
+                'password' => 'nullable|string|min:6',
+            ]);
+
+            // Prepare data để update
+            $updateData = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'role' => $request->role,
+            ];
+
+            // Chỉ update password nếu có nhập
+            if ($request->filled('password')) {
+                $updateData['password'] = Hash::make($request->password);
+            }
+
+            // Update thông tin
+            $user->update($updateData);
+
+            return redirect()->route('admin', ['section' => 'users'])->with('success', 'User updated successfully!');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('admin', ['section' => 'users'])->with('error', 'Failed to update user. Please try again.');
+        }
+    }
+
+    /*
+    *** Func xử lý delete user
+    */
+    public function deleteUser($id)
+    {
+        try {
+            // Prevent admin tự xóa chính mình
+            if (auth()->id() == $id) {
+                return redirect()->route('admin', ['section' => 'users'])->with('error', 'You cannot delete your own account!');
+            }
+
+            // Tìm và xóa user
+            $user = User::findOrFail($id);
+            $user->delete();
+
+            return redirect()->route('admin', ['section' => 'users'])->with('success', 'User deleted successfully!');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('admin', ['section' => 'users'])->with('error', 'Failed to delete user. Please try again.');
+        }
+    }
+
 }
