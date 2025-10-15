@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="footer_container container grid">
-        
+
         <div class="footer_logo">
             <a class="logo" href="dashboard">CAKES</a>
             <p class="">
@@ -9,14 +9,14 @@
         </div>
 
         <div class="footer_content">
-    
+
             <div>
                 <h3 class="footer_title">Main Menu</h3>
                 <ul class="footer_links">
-                    <li><a href="dashboard#home" class="footer_link">Home</a></li>
-                    <li><a href="dashboard#products" class="footer_link">Products</a></li>
-                    <li><a href="dashboard#about" class="footer_link">About</a></li>
-                    <li><a href="dashboard#home" class="footer_link">Reviews</a></li>
+                    <li><a href="/#home" class="footer_link">Home</a></li>
+                    <li><a href="/#products" class="footer_link">Products</a></li>
+                    <li><a href="/#about" class="footer_link">About</a></li>
+                    <li><a href="/#home" class="footer_link">Reviews</a></li>
                 </ul>
             </div>
 
@@ -45,9 +45,9 @@
             <div>
                 <h3 class="footer_title">Follow us</h3>
                 <ul class="footer_followus footer_links footer_icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#footer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#footer"><i class="fab fa-instagram"></i></a>
+                    <a href="#footer"><i class="fab fa-twitter"></i></a>
                 </ul>
 
             </div>
@@ -58,7 +58,7 @@
     <div class="footer_info container">
         <span class="footer_copy">
             &#169; 2026 CAKE Order.
-        </span>
+        </span> <br>
     </div>
 
 </footer>

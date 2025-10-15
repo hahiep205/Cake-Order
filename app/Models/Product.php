@@ -18,4 +18,10 @@ class Product extends Model
         'image'
     ];
 
+    public static function getProducts()
+    {
+        // CHỈ lấy products có stock > 0 để hiển thị trên dashboard
+        return self::where('stock', '>', 0)->get();
+    }
+
 }

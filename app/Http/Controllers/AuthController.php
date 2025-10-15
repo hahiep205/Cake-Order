@@ -11,24 +11,20 @@ use App\Models\Product;
 class AuthController extends Controller
 {
 
-    /*
-     *** Func trả về page dashboard.
-     */
     public function dashboard()
     {
-        return view('dashboard');
+        $products = Product::getProducts();
+
+        return view('dashboard', compact('products'));
     }
 
-    /*
-     *** Func trả về page register.
-     */
     public function register()
     {
         return view('register');
     }
 
     /*
-     *** Func tạo account rồi tự động login, tạo session, redirect tới dashboard. 
+     *** reg account rồi tự động login, tạo session, redirect tới dashboard. 
      */
     public function registered(Request $request)
     {
@@ -52,17 +48,14 @@ class AuthController extends Controller
         return redirect()->route('dashboard');
     }
 
-    /*
-    *** Func trả về page login
-    */
     public function login()
     {
         return view('login');
     }
 
     /*
-    *** Func check account và tạo session ròi redirect tới route với role tương ứng.
-    */
+     *** check account và tạo session ròi redirect tới route với role tương ứng.
+     */
     public function logined(Request $request)
     {
         if (auth()->attempt($request->only('email', 'password'))) {
@@ -78,9 +71,6 @@ class AuthController extends Controller
         return redirect()->back()->withErrors(['email' => 'Email or password is incorrect.']);
     }
 
-    /*
-    *** Func logout, xóa session token khi logout.
-    */
     public function logout()
     {
         if (auth()->check()) {
@@ -92,26 +82,19 @@ class AuthController extends Controller
         return redirect()->route('dashboard');
     }
 
-
-    /*
-    *** Func return trang profile.
-    */
     public function profile()
     {
         return view('modals.profile-management.profile');
     }
 
-    /*
-    *** Function return profile edit.
-    */
     public function profile_edit()
     {
         return view('modals.profile-management.profile_edit');
     }
 
     /*
-    *** Func update info cho user.
-    */
+     *** Func update info cho user.
+     */
     public function updateProfile(Request $request)
     {
         $request->validate([
@@ -130,12 +113,5 @@ class AuthController extends Controller
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
 
-    /*
-    *** Func trả về trang cart.
-    */
-    public function cart()
-    {
-        return view('cart.cart');
-    }
 
 }

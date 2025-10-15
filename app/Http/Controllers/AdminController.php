@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     /*
-     *** Func hiển thị trang admin với danh sách products
+     *** hiển thị trang admin với danh sách products
      */
     public function index()
     {
@@ -28,7 +28,7 @@ class AdminController extends Controller
     }
 
     /*
-     *** Func xử lý update product
+     *** update product
      */
     public function updateProduct(Request $request, $id)
     {
@@ -64,7 +64,7 @@ class AdminController extends Controller
     }
 
     /*
-     *** Func xử lý delete product
+     *** delete product
      */
     public function deleteProduct($id)
     {
@@ -81,7 +81,7 @@ class AdminController extends Controller
     }
 
     /*
-     *** Func xử lý thêm product mới
+     *** thêm product mới
      */
     public function storeProduct(Request $request)
     {
@@ -117,7 +117,7 @@ class AdminController extends Controller
     }
 
     /*
-    *** Func xử lý thêm user mới
+    *** thêm user mới
     */
     public function storeUser(Request $request)
     {
@@ -153,7 +153,7 @@ class AdminController extends Controller
     }
 
     /*
-    *** Func xử lý update user
+    *** update user
     */
     public function updateUser(Request $request, $id)
     {
@@ -196,12 +196,12 @@ class AdminController extends Controller
     }
 
     /*
-    *** Func xử lý delete user
+    *** delete user
     */
     public function deleteUser($id)
     {
         try {
-            // Prevent admin tự xóa chính mình
+            // admin tự xóa chính mình
             if (auth()->id() == $id) {
                 return redirect()->route('admin', ['section' => 'users'])->with('error', 'You cannot delete your own account!');
             }
@@ -214,6 +214,46 @@ class AdminController extends Controller
             
         } catch (\Exception $e) {
             return redirect()->route('admin', ['section' => 'users'])->with('error', 'Failed to delete user. Please try again.');
+        }
+    }
+
+/*
+     *** Add product to menu (tăng stock lên 1)
+     */
+    public function addProductToMenu($id)
+    {
+        try {
+            $product = Product::findOrFail($id);
+            
+            // Tăng stock lên 1
+            $product->increment('stock', 1);
+            
+            return redirect()->route('admin', ['section' => 'menu'])
+                ->with('success', 'Product added to menu successfully!');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('admin', ['section' => 'menu'])
+                ->with('error', 'Failed to add product to menu.');
+        }
+    }
+
+    /*
+     *** Remove product from menu (set stock = 0)
+     */
+    public function removeProductFromMenu($id)
+    {
+        try {
+            $product = Product::findOrFail($id);
+            
+            // Set stock về 0
+            $product->update(['stock' => 0]);
+            
+            return redirect()->route('admin', ['section' => 'menu'])
+                ->with('success', 'Product removed from menu successfully!');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('admin', ['section' => 'menu'])
+                ->with('error', 'Failed to remove product from menu.');
         }
     }
 

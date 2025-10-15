@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Managenment</title>
-    
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/log.css">
@@ -18,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body class="admin_page">
 
     @include('header')
@@ -27,12 +29,12 @@
 
     <div class="container">
         <div class="admin_layout">
-            
+
             <!-- SIDEBAR -->
             <div class="admin_sidebar">
                 <h3 class="sidebar_title">ADMIN PANEL</h3>
                 <ul class="sidebar_menu">
-                    
+
                     <li class="menu_item active" data-section="products">
                         <i class="ri-cake-line"></i>
                         <span>Product Management</span>
@@ -57,7 +59,7 @@
 
             <!-- MAIN CONTENT -->
             <div class="admin_content">
-                
+
                 <!-- Section: Product Management -->
                 <div class="content_section active" id="section_products">
                     @include('admin.products')
@@ -83,7 +85,7 @@
         </div>
     </div>
 
-  @include('footer')
+    @include('footer')
 
     <!-- Form ẩn để xử lý DELETE request -->
     <form id="deleteForm" method="POST" style="display: none;">
@@ -106,29 +108,31 @@
     <script src="{{asset('js/admin-menu.js')}}"></script>
     <script src="{{asset('js/product-management.js')}}"></script>
     <script src="{{asset('js/user-management.js')}}"></script>
+    <script src="{{asset('js/menu-management.js')}}"></script>
     <script src="{{asset('js/modal-handler.js')}}"></script>
     <script src="{{asset('js/admin.js')}}"></script>
 
     <!-- Notification Handler -->
     <script>
         @if(session('success'))
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 showNotification('{{ session('success') }}', 'success');
             });
         @endif
 
         @if(session('error'))
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 showNotification('{{ session('error') }}', 'error');
             });
         @endif
 
         @if($errors->any())
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 showNotification('{{ $errors->first() }}', 'error');
             });
         @endif
     </script>
 
 </body>
+
 </html>
