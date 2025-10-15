@@ -32,6 +32,8 @@
     @include('footer')
 
     <script src="/js/notification.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/dashboard-cart.js"></script>
     <script>
         @if(session('success'))
             showNotification('{{ session('success') }}', 'success');

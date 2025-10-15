@@ -24,7 +24,7 @@ header {
     /* padding: 15px 50px; */
     transition: 0.5s ease;
     position: fixed;
-    padding: 0 50px;
+    /* padding: 0 50px; */
 }
 
 header .container {
@@ -291,17 +291,12 @@ header .container .brand:hover {
     align-items: center;
 }
 
-/* Social Link - CHỈ style container */
 .footer_social-link {
-    /* display: inline-flex;
-    align-items: center;
-    justify-content: center; */
     width: 40px;
     height: 40px;
     transition: all 0.3s ease;
 }
 
-/* Icon - CHỈ style icon bên trong */
 .footer_icons {
     display: flex;
     flex-direction: row;
@@ -318,7 +313,7 @@ header .container .brand:hover {
     transform: scale(1.3);
 }
 
-/* Footer Info (Copyright) */
+/* Footer Info */
 .footer_info {
     max-width: 1200px;
     margin: 2.5rem auto 0;
@@ -487,8 +482,8 @@ header .container .brand:hover {
     }
 
     header .container {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 }
 
@@ -508,15 +503,12 @@ header .container .brand:hover {
 
 /* Gộp nav-logs vào cùng box với nav-items trên mobile */
 @media (max-width: 1040px) {
-    header {
-        padding: 0 32px;
-    }
 
     header .container {
         max-width: 1200px;
         width: 100%;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     footer {
@@ -532,10 +524,9 @@ header .container .brand:hover {
         right: 20px;
     }
 
-    /* ẨN nav-items và nav-logs khi chưa mở menu */
-    header .nav .nav-items {
+    /* header .nav .nav-items {
         display: none;
-    }
+    } */
 
     header .nav .nav-logs {
         display: none;
@@ -658,8 +649,15 @@ header .container .brand:hover {
 }
 
 @media (max-width: 768px) {
-    header .nav {
+    header .nav .nav-items {
         display: none;
+    }
+
+    header .container {
+        max-width: 1200px;
+        width: 100%;
+        padding-left: 20px;
+
     }
 
     .home .content {

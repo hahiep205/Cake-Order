@@ -45,15 +45,16 @@
                         <span>User Management</span>
                     </li>
 
+                    <li class="menu_item" data-section="menu">
+                        <i class="ri-box-3-line"></i>
+                        <span>Menu Management</span>
+                    </li>
+
                     <li class="menu_item" data-section="orders">
                         <i class="ri-shopping-cart-line"></i>
                         <span>Order Management</span>
                     </li>
 
-                    <li class="menu_item" data-section="menu">
-                        <i class="ri-box-3-line"></i>
-                        <span>Menu Management</span>
-                    </li>
                 </ul>
             </div>
 
@@ -70,14 +71,14 @@
                     @include('admin.users')
                 </div>
 
-                <!-- Section: Order Management -->
-                <div class="content_section" id="section_orders">
-                    @include('admin.orders')
-                </div>
-
                 <!-- Section: Menu Management -->
                 <div class="content_section" id="section_menu">
                     @include('admin.menu')
+                </div>
+
+                <!-- Section: Order Management -->
+                <div class="content_section" id="section_orders">
+                    @include('admin.orders')
                 </div>
 
             </div>
