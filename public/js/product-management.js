@@ -2,20 +2,12 @@
 *** Product Management - CRUD Operations
 */
 
-/*
-*** Biến toàn cục để lưu productId khi delete
-*/
 let deleteProductId = null;
 
-/*
-*** Function mở Modal Edit Product
-*/
 function editProduct(productId) {
-    // Lấy modal
     const modal = document.getElementById('editModal');
     const editForm = document.getElementById('editForm');
-    
-    // Fetch dữ liệu product từ table
+
     const row = event.target.closest('tr');
     const cells = row.querySelectorAll('td');
     
@@ -33,27 +25,23 @@ function editProduct(productId) {
     if (imageSpan) {
         imageValue = imageSpan.getAttribute('title');
     }
-    
-    // Điền dữ liệu vào form
+
     document.getElementById('edit_product_id').value = productIdValue;
     document.getElementById('edit_product_name').value = productName;
     document.getElementById('edit_price').value = price;
     document.getElementById('edit_stock').value = stock;
     document.getElementById('edit_description').value = description;
     document.getElementById('edit_image').value = imageValue;
-    
-    // Set action URL cho form
+
     editForm.action = '/admin/products/' + productId;
-    
-    // Hiển thị modal
+
     modal.classList.add('show');
-    
-    // Prevent body scroll khi modal mở
+
     document.body.style.overflow = 'hidden';
 }
 
 /*
-*** Function mở Modal Add Product
+*** Add Product
 */
 function openAddModal() {
     const modal = document.getElementById('addModal');
@@ -65,44 +53,58 @@ function openAddModal() {
     document.getElementById('add_stock').value = '';
     document.getElementById('add_description').value = '';
     document.getElementById('add_image').value = '';
-    
-    // Hiển thị modal
+
     modal.classList.add('show');
-    
-    // Prevent body scroll
     document.body.style.overflow = 'hidden';
 }
 
-/*
-*** Function mở Modal Confirm Delete
-*/
 function deleteProduct(productId, productName) {
-    // Lưu productId vào biến toàn cục
     deleteProductId = productId;
-    
-    // Hiển thị tên product trong modal
     document.getElementById('deleteProductName').textContent = productName;
-    
-    // Hiển thị modal
     const modal = document.getElementById('deleteModal');
     modal.classList.add('show');
-    
-    // Prevent body scroll
     document.body.style.overflow = 'hidden';
 }
 
-/*
-*** Function xác nhận Delete
-*/
 function confirmDelete() {
     if (deleteProductId) {
-        // Lấy form delete ẩn
         const deleteForm = document.getElementById('deleteForm');
-        
-        // Set action URL với product ID
         deleteForm.action = '/admin/products/' + deleteProductId;
-        
-        // Submit form
         deleteForm.submit();
     }
+}
+
+/*
+*** Preview Image
+*/
+function showImagePreview(imageName) {
+    // Lấy modal và image element
+    const modal = document.getElementById('imagePreviewModal');
+    const previewImage = document.getElementById('previewImage');
+    
+    // Set image source
+    if (imageName && imageName.trim() !== '') {
+        previewImage.src = '/product_img/' + imageName;
+        previewImage.alt = 'Product Image: ' + imageName;
+    } else {
+        previewImage.src = '/img/no-image.png';
+        previewImage.alt = 'No image available';
+    }
+
+    modal.classList.add('show');
+
+    document.body.style.overflow = 'hidden';
+
+    previewImage.onerror = function() {
+        this.src = '/img/no-image.png';
+        this.alt = 'Image not found';
+    };
+}
+
+function closeImagePreviewModal() {
+    const modal = document.getElementById('imagePreviewModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+    const previewImage = document.getElementById('previewImage');
+    previewImage.src = '';
 }

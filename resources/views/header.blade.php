@@ -3,8 +3,6 @@
 
         <a href="dashboard" class="brand">Cakes</a>
 
-
-
         <div class="nav">
 
             <div class="nav-items">
@@ -12,6 +10,17 @@
                 <a href="/#products">Products</a>
                 <a href="/#about">About</a>
                 <a href="/">Reviews</a>
+            </div>
+
+            <div class="nav-search">
+                <form class="search-form" id="searchForm">
+                    <div class="search-container">
+                        <input type="text" name="search" class="search-input" placeholder="Search cakes.." autocomplete="off">
+                        <button type="submit" class="search-btn">
+                            <i class="ri-search-line"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
 
             <div class="nav-logs">

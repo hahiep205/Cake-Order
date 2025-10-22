@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Managenment</title>
 
-    <!-- CSS Files -->
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/log.css">
     <link rel="stylesheet" href="/css/notification.css">
@@ -24,7 +23,6 @@
 
     @include('header')
 
-    <!-- Notification Container -->
     <div id="notificationContainer" class="notification-container"></div>
 
     <div class="container">
@@ -61,22 +59,18 @@
             <!-- MAIN CONTENT -->
             <div class="admin_content">
 
-                <!-- Section: Product Management -->
                 <div class="content_section active" id="section_products">
                     @include('admin.products')
                 </div>
 
-                <!-- Section: User Management -->
                 <div class="content_section" id="section_users">
                     @include('admin.users')
                 </div>
 
-                <!-- Section: Menu Management -->
                 <div class="content_section" id="section_menu">
                     @include('admin.menu')
                 </div>
 
-                <!-- Section: Order Management -->
                 <div class="content_section" id="section_orders">
                     @include('admin.orders')
                 </div>
@@ -103,6 +97,22 @@
     @include('modals.user-management.edit-user')
     @include('modals.user-management.add-user')
     @include('modals.user-management.delete-confirm')
+
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" class="modal">
+        <div class="modal_content">
+            <div class="modal_header">
+                <h3>Image Preview</h3>
+                <button type="button" class="modal_close" onclick="closeImagePreviewModal()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            
+            <div class="modal_body image_preview_body">
+                <img id="previewImage" src="" alt="Product Image" />
+            </div>
+        </div>
+    </div>
 
     <!-- Include JavaScript Files -->
     <script src="{{asset('js/notification.js')}}"></script>

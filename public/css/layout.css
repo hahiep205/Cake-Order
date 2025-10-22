@@ -13,6 +13,7 @@ body {
     overflow-x: hidden;
 }
 
+
 /* <=========================> HEADER <=========================> */
 
 header {
@@ -21,10 +22,8 @@ header {
     left: 0;
     width: 100%;
     display: flex;
-    /* padding: 15px 50px; */
     transition: 0.5s ease;
     position: fixed;
-    /* padding: 0 50px; */
 }
 
 header .container {
@@ -36,7 +35,6 @@ header .container {
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    /* padding: 0 2rem; */
 }
 
 header .brand {
@@ -53,26 +51,29 @@ header .nav {
     position: relative;
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 50px;
+}
+
+header .nav .nav-search {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0 20px;
 }
 
 header .nav .nav-items {
     display: flex;
     align-items: center;
-    flex-grow: 0.5;
-    justify-content: center;
-    margin: 0 auto;
+    flex-shrink: 0;
 }
 
 header .nav .nav-logs {
-    margin-left: auto;
-    margin-right: 2rem;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     flex-shrink: 0;
+    margin-right: 2rem;
 }
 
 header .nav .nav-items a {
@@ -137,7 +138,6 @@ header.scrolled .menu-btn {
     background-size: 30px;
     background-position: center;
     filter: brightness(0);
-    /* Chuyển icon sang màu đen */
 }
 
 header.scrolled .menu-btn.active {
@@ -145,12 +145,11 @@ header.scrolled .menu-btn.active {
     background-size: 25px;
     background-position: center;
     filter: brightness(0);
-    /* Chuyển icon sang màu đen */
 }
 
 /*============================ Icon của nav_logs ==================================*/
 
-/* Bỏ underline effect cho icon giỏ hàng */
+/* Bỏ underline effect cho icon cart */
 header .nav .nav-logs a:has(i.icon):before {
     display: none;
 }
@@ -174,6 +173,133 @@ header .nav .nav-logs i:hover {
 header .container .brand:hover {
     transform: scale(1.1);
 }
+
+/* <=========================> NAV SEARCH <=========================> */
+
+.nav-search {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 3.5px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    width: 270px;
+}
+
+.search-container:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.search-container:focus-within {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px 15px;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+.nav-search input {
+    background: none !important;
+    border: none !important;
+    border-radius: 20px !important;
+    width: 190px !important;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+.search-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 2px;
+}
+
+.search-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.search-btn:active {
+    transform: scale(0.95);
+}
+
+.search-btn i {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Search khi scrolled header */
+header.scrolled .search-container {
+    background: rgba(34, 34, 34, 0.05);
+    border-color: rgba(34, 34, 34, 0.1);
+}
+
+header.scrolled .search-container:hover {
+    background: rgba(34, 34, 34, 0.1);
+    border-color: rgba(34, 34, 34, 0.2);
+}
+
+header.scrolled .search-container:focus-within {
+    background: rgba(34, 34, 34, 0.1);
+    border-color: rgba(34, 34, 34, 0.3);
+    box-shadow: 0 0 15px rgba(34, 34, 34, 0.1);
+}
+
+header.scrolled .search-input {
+    color: #222;
+}
+
+header.scrolled .search-input::placeholder {
+    color: rgba(34, 34, 34, 1);
+}
+
+header.scrolled .search-btn {
+    background: rgba(34, 34, 34, 0.1);
+}
+
+header.scrolled .search-btn:hover {
+    background: rgba(34, 34, 34, 0.2);
+}
+
+header.scrolled .search-btn i {
+    color: #222;
+}
+
 
 /* <=========================> FOOTER <=========================> */
 
@@ -207,8 +333,10 @@ header .container .brand:hover {
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     transition: 0.3s ease;
+    transform-origin: center center;
+    width: fit-content;
 }
 
 .footer_logo a:hover {
@@ -221,14 +349,12 @@ header .container .brand:hover {
     margin: 0;
 }
 
-/* Footer Content Grid */
 .footer_content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
 }
 
-/* Footer Titles */
 .footer_title {
     font-size: 1.1rem;
     font-weight: 600;
@@ -237,7 +363,6 @@ header .container .brand:hover {
     padding-bottom: 0.5rem;
 }
 
-/* Footer Links */
 .footer_links {
     list-style: none;
     padding: 0;
@@ -263,12 +388,10 @@ header .container .brand:hover {
     height: 2px;
     bottom: -2px;
     left: 0;
-    /* background-color: #ff6b6b; */
     transition: width 0.3s ease;
 }
 
 .footer_link:hover {
-    /* color: #ff6b6b; */
     transform: translateX(5px);
 }
 
@@ -276,14 +399,12 @@ header .container .brand:hover {
     width: 100%;
 }
 
-/* Footer Information */
 .footer_information {
     color: #333;
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
-/* Social Links Container */
 .footer_followus {
     display: flex;
     flex-direction: row;
@@ -313,7 +434,6 @@ header .container .brand:hover {
     transform: scale(1.3);
 }
 
-/* Footer Info */
 .footer_info {
     max-width: 1200px;
     margin: 2.5rem auto 0;
@@ -330,7 +450,6 @@ header .container .brand:hover {
 
 /* <=========================> FOOTER RESPONSIVE <=========================> */
 
-/* Desktop Large (1200px+) */
 @media (min-width: 1200px) {
     .footer_container {
         grid-template-columns: 1.5fr 3fr;
@@ -343,8 +462,8 @@ header .container .brand:hover {
     }
 }
 
-/* Desktop (992px - 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
+
     .footer_container {
         grid-template-columns: 1.2fr 2.8fr;
         gap: 2.5rem;
@@ -356,8 +475,8 @@ header .container .brand:hover {
     }
 }
 
-/* Tablet Landscape (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
+
     .footer_container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -379,8 +498,8 @@ header .container .brand:hover {
     }
 }
 
-/* Tablet Portrait (576px - 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
+
     .footer {
         padding: 2.5rem 0 1rem;
     }
@@ -415,7 +534,6 @@ header .container .brand:hover {
     }
 }
 
-/* Mobile (max-width: 575px) */
 @media (max-width: 575px) {
     .footer {
         padding: 2rem 0 1rem;
@@ -485,6 +603,11 @@ header .container .brand:hover {
         padding-left: 2rem;
         padding-right: 2rem;
     }
+
+    header .nav {
+        margin-left: 27px !important;
+    }
+
 }
 
 
@@ -499,10 +622,17 @@ header .container .brand:hover {
         padding-left: 0;
         padding-right: 0;
     }
+
+    header .nav {
+        margin-left: 100px !important;
+    }
+
 }
 
-/* Gộp nav-logs vào cùng box với nav-items trên mobile */
 @media (max-width: 1040px) {
+    .nav-search {
+        display: none !important;
+    }
 
     header .container {
         max-width: 1200px;
@@ -532,7 +662,12 @@ header .container .brand:hover {
         display: none;
     }
 
-    /* KHI MENU MỞ */
+    header .nav {
+        justify-content: center !important;
+        margin-left: none !important;
+    }
+
+    /* Khi click vô menu */
     header .nav.active {
         position: fixed;
         width: 100%;
@@ -542,12 +677,10 @@ header .container .brand:hover {
         display: flex;
         justify-content: center;
         align-items: center;
-        /* background: rgba(1, 1, 1, 0.5); */
         flex-direction: column;
         gap: 0;
     }
 
-    /* BOX CHUNG CHO NAV-ITEMS */
     header .nav.active .nav-items {
         background-color: transparent;
         backdrop-filter: blur(8px);
@@ -563,7 +696,6 @@ header .container .brand:hover {
         border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* BOX CHO NAV-LOGS - NỐI LIỀN VỚI NAV-ITEMS */
     header .nav.active .nav-logs {
         background-color: transparent;
         backdrop-filter: blur(8px);
@@ -573,7 +705,6 @@ header .container .brand:hover {
         margin: 20px;
         margin-top: 0;
         padding: 30px 40px;
-        /* padding-top: 20px; */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -583,8 +714,6 @@ header .container .brand:hover {
         border-right: 1px solid rgba(255, 255, 255, 0.3);
 
     }
-
-    /* ==================== KHI SCROLL > 50PX ==================== */
 
     /* ĐỔI BACKGROUND SANG TRẮNG */
     body.scrolled header .nav.active .nav-items {
@@ -603,7 +732,6 @@ header .container .brand:hover {
         border-right: 1px solid rgba(34, 34, 34, 0.2);
     }
 
-    /* Style cho links */
     header .nav .nav-items a {
         color: #fff;
         font-size: 1em;
@@ -616,7 +744,6 @@ header .container .brand:hover {
         margin: 20px;
     }
 
-    /* Menu button */
     .menu-btn {
         display: block;
         background: url("/img/menu.png") no-repeat;
@@ -649,6 +776,10 @@ header .container .brand:hover {
 }
 
 @media (max-width: 768px) {
+    .nav-search {
+        display: none !important;
+    }
+
     header .nav .nav-items {
         display: none;
     }

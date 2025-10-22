@@ -1,19 +1,18 @@
-
 // <!-- Auto Switch Section Handler -->
-// Lấy tham số section từ URL
+
 const urlParams = new URLSearchParams(window.location.search);
 const section = urlParams.get('section');
 
 // Nếu có tham số section, chuyển sang section ngay
 if (section) {
-    // Chờ DOM load xong
+
     window.addEventListener('DOMContentLoaded', function () {
         // Xóa active class khỏi tất cả menu items
         document.querySelectorAll('.menu_item').forEach(item => {
             item.classList.remove('active');
         });
 
-        // Xóa active class khỏi tất cả content sections
+        // content sections
         document.querySelectorAll('.content_section').forEach(contentSection => {
             contentSection.classList.remove('active');
         });
@@ -24,14 +23,13 @@ if (section) {
             menuItem.classList.add('active');
         }
 
-        // Hiển thị content section tương ứng
+        // display content section
         const contentSection = document.getElementById(`section_${section}`);
         if (contentSection) {
             contentSection.classList.add('active');
-            // Force reflow để tránh animation
             contentSection.offsetHeight;
         }
-    }, { once: true }); // Chỉ chạy 1 lần
+    }, { once: true });
 }
 
 // Js for admin header - auto scrolled state
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     header.style.padding = '0';
 
-    // Đổi màu chữ sang tối
     const brand = header.querySelector('.brand');
     const navLinks = header.querySelectorAll('.nav-items a, .nav-logs a, .nav_name');
 
@@ -53,6 +50,5 @@ document.addEventListener('DOMContentLoaded', () => {
         link.style.color = '#222';
     });
 
-    // Thêm class để đổi màu underline effect
     header.classList.add('scrolled');
 });

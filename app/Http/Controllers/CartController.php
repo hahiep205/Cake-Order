@@ -26,9 +26,6 @@ class CartController extends Controller
         return view('cart.cart', compact('cartItems', 'totalAmount', 'itemsCount'));
     }
 
-    /*
-     *** Thêm sản phẩm vào giỏ hàng
-     */
     public function addToCart(Request $request)
     {
         if (!auth()->check()) {
@@ -53,16 +50,15 @@ class CartController extends Controller
                 ], 404);
             }
 
-            // KIỂM TRA XEM SẢN PHẨM ĐÃ CÓ TRONG CART CHƯA
+            // check xem đã có trong cart chưa
             $existingItem = AddToCart::where('user_id', auth()->id())
                 ->where('product_id', $product->product_id)
                 ->first();
 
             if ($existingItem) {
-                // NẾU CÓ RỒI: Tăng số lượng
+                // có thì +1
                 $newQuantity = $existingItem->quantity + ($request->quantity ?? 1);
 
-                // Check stock
                 if ($product->stock < $newQuantity) {
                     return response()->json([
                         'success' => false,
@@ -76,9 +72,6 @@ class CartController extends Controller
                 $message = 'Product quantity updated in cart!';
 
             } else {
-                // NẾU CHƯA CÓ: Tạo mới
-
-                // Check stock
                 if ($product->stock < ($request->quantity ?? 1)) {
                     return response()->json([
                         'success' => false,
@@ -119,7 +112,7 @@ class CartController extends Controller
     }
 
     /*
-     *** Cập nhật số lượng sản phẩm trong giỏ
+     *** Cập nhật số lượng sản phẩm trong cart
      */
     public function updateQuantity(Request $request, $id)
     {
@@ -166,9 +159,6 @@ class CartController extends Controller
         }
     }
 
-    /*
-     *** Xóa sản phẩm khỏi giỏ hàng
-     */
     public function removeItem($id)
     {
         try {
@@ -202,7 +192,7 @@ class CartController extends Controller
     }
 
     /*
-     *** Cập nhật ghi chú cho sản phẩm
+     *** Cập nhật ghi chú
      */
     public function updateNote(Request $request, $id)
     {

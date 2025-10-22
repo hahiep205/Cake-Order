@@ -14,7 +14,6 @@ class AuthController extends Controller
     public function dashboard()
     {
         $products = Product::getProducts();
-
         return view('dashboard', compact('products'));
     }
 
@@ -92,9 +91,6 @@ class AuthController extends Controller
         return view('modals.profile-management.profile_edit');
     }
 
-    /*
-     *** Func update info cho user.
-     */
     public function updateProfile(Request $request)
     {
         $request->validate([

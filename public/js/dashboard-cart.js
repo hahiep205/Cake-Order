@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             this.disabled = true;
             const originalHTML = this.innerHTML;
-            this.innerHTML = '<i class="ri-loader-4-line" style="animation: spin 1s linear infinite;"></i>';
 
             fetch('/cart/add', {
                 method: 'POST',

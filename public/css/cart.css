@@ -27,7 +27,7 @@ textarea {
     resize: vertical;
 }
 
-/* Animation slide for button */
+/* Hiệu ứng slide cho button */
 .hover-slide-left {
     position: relative;
     overflow: hidden;

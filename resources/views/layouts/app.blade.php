@@ -9,7 +9,6 @@
 
     <title>@yield('title', 'Cake Order')</title>
 
-    <!-- CSS Files -->
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/log.css">
     <link rel="stylesheet" href="/css/notification.css">
@@ -34,6 +33,7 @@
     <script src="/js/notification.js"></script>
     <script src="/js/dashboard.js"></script>
     <script src="/js/dashboard-cart.js"></script>
+    <script src="/js/search.js"></script>
     <script>
         @if(session('success'))
             showNotification('{{ session('success') }}', 'success');

@@ -2,9 +2,6 @@
 *** Modal Handler - Utilities for opening/closing modals
 */
 
-/*
-*** Function đóng Modal Edit Product
-*/
 function closeEditModal() {
     const modal = document.getElementById('editModal');
     modal.classList.remove('show');
@@ -19,19 +16,14 @@ function closeEditModal() {
 function closeAddModal() {
     const modal = document.getElementById('addModal');
     modal.classList.remove('show');
-    
-    // Enable body scroll lại
+
     document.body.style.overflow = 'auto';
 }
 
-/*
-*** Function đóng Modal Delete
-*/
 function closeDeleteModal() {
     const modal = document.getElementById('deleteModal');
     modal.classList.remove('show');
-    
-    // Reset productId
+
     if (typeof deleteProductId !== 'undefined') {
         deleteProductId = null;
     }
@@ -61,20 +53,6 @@ window.onclick = function(event) {
     }
 }
 
-/*
-*** Đóng modal khi nhấn ESC
-*/
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeEditModal();
-        closeDeleteModal();
-        closeAddModal();
-    }
-});
-
-/*
-*** Đóng user modals khi click bên ngoài modal content
-*/
 window.onclick = function(event) {
     const editModal = document.getElementById('editModal');
     const deleteModal = document.getElementById('deleteModal');
@@ -84,6 +62,11 @@ window.onclick = function(event) {
     const editUserModal = document.getElementById('editUserModal');
     const deleteUserModal = document.getElementById('deleteUserModal');
     const addUserModal = document.getElementById('addUserModal');
+    const imagePreviewModal = document.getElementById('imagePreviewModal');
+
+    if (event.target === imagePreviewModal) {
+        closeImagePreviewModal();
+    }
     
     if (event.target === editModal) {
         closeEditModal();
@@ -110,9 +93,6 @@ window.onclick = function(event) {
     }
 }
 
-/*
-*** Đóng modal khi nhấn ESC
-*/
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeEditModal();
@@ -121,5 +101,6 @@ document.addEventListener('keydown', function(event) {
         closeEditUserModal();
         closeDeleteUserModal();
         closeAddUserModal();
+        closeImagePreviewModal();
     }
 });

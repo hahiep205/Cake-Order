@@ -1,6 +1,5 @@
 /*
- *** Shopping Cart JavaScript Handler
- *** Xử lý các tương tác: update quantity, remove item, update note
+ *** update quantity, remove item, update note
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     const token = csrfToken.getAttribute('content');
 
-    // Nút giảm số lượng
+    // btn - sl
     const decreaseBtns = document.querySelectorAll('.btn_decrease');
     decreaseBtns.forEach(btn => {
         btn.addEventListener('click', function () {
@@ -26,13 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (currentQuantity > 1) {
                 updateQuantity(itemId, currentQuantity - 1);
             } else {
-                // Nếu quantity = 1, mà giảm tiếp thì sẽ tự động xóa
                 removeItem(itemId);
             }
         });
     });
 
-    // Nút tăng số lượng
+    // btn + sl
     const increaseBtns = document.querySelectorAll('.btn_increase');
     increaseBtns.forEach(btn => {
         btn.addEventListener('click', function () {
@@ -44,9 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /*
-     *** Xóa sản phẩm
-     */
     const removeBtns = document.querySelectorAll('.remove_btn');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', function () {
@@ -55,9 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /*
-     *** Cập nhật note
-     */
     const noteTextareas = document.querySelectorAll('.note_textarea');
     let noteTimeout;
 
@@ -66,21 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const itemId = this.getAttribute('data-item-id');
             const noteValue = this.value;
 
-            // Clear timeout cũ
             clearTimeout(noteTimeout);
 
-            // Set timeout mới - auto save sau 1 giây
             noteTimeout = setTimeout(() => {
                 updateNote(itemId, noteValue);
             }, 1000);
         });
     });
 
-    /*
-     *** Cập nhật số lượng
-     */
     function updateQuantity(itemId, newQuantity) {
-        // Disable buttons tạm thời
         const decreaseBtn = document.querySelector(`.btn_decrease[data-item-id="${itemId}"]`);
         const increaseBtn = document.querySelector(`.btn_increase[data-item-id="${itemId}"]`);
         decreaseBtn.disabled = true;
@@ -100,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Cập nhật số lượng trên UI
+                    // Cập nhật số lượng
                     const quantitySpan = document.querySelector(`.quantity[data-item-id="${itemId}"]`);
                     quantitySpan.textContent = newQuantity;
 
@@ -108,11 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const itemTotalSpan = document.querySelector(`.cart_item[data-item-id="${itemId}"] .item_total`);
                     itemTotalSpan.textContent = data.item_total;
 
-                    // Cập nhật tổng tiền đơn hàng
+                    // tổng tiền đơn hàng
                     document.getElementById('subtotal').textContent = data.total_amount;
                     document.getElementById('total_amount').textContent = data.total_amount;
 
-                    // Hiển thị notification
                     showNotification(data.message, 'success');
                 } else {
                     showNotification(data.message, 'error');
@@ -126,15 +111,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error:', error);
                 showNotification('Failed to update quantity. Please try again.', 'error');
 
-                // Enable lại buttons
                 decreaseBtn.disabled = false;
                 increaseBtn.disabled = false;
             });
     }
 
-    /*
-     *** Func xóa sản phẩm
-     */
     function removeItem(itemId) {
         fetch(`/cart/remove/${itemId}`, {
             method: 'DELETE',
@@ -156,23 +137,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(() => {
                         cartItem.remove();
 
-                        // Kiểm tra nếu giỏ hàng trống
                         const remainingItems = document.querySelectorAll('.cart_item');
                         if (remainingItems.length === 0) {
-                            // Reload trang để hiển thị empty state
                             location.reload();
                         } else {
-                            // Cập nhật số lượng items
                             document.getElementById('items_count').textContent = data.items_count;
-
-                            // Cập nhật tổng tiền
                             document.getElementById('subtotal').textContent = data.total_amount;
                             document.getElementById('total_amount').textContent = data.total_amount;
 
                         }
                     }, 300);
-
-                    // Hiển thị notification
                     showNotification(data.message, 'success');
                 } else {
                     showNotification(data.message, 'error');
@@ -202,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Note được lưu thành công (không hiển thị notification để tránh spam)
                     console.log('Note saved successfully');
                 } else {
                     showNotification(data.message, 'error');

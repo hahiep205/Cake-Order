@@ -10,30 +10,24 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    /*
-     *** hiển thị trang admin với danh sách products
-     */
+
     public function index()
     {
-        // Check user
         if (auth()->user()->isUser()) {
             return redirect()->route('dashboard')->with('error', 'Access failed to admin page.');
         }
 
-        // Lấy tất cả products và users từ database
+        // Lấy data products và users từ dtb
         $products = Product::all();
         $users = User::all();
 
         return view('admin.admin', compact('products', 'users'));
     }
 
-    /*
-     *** update product
-     */
     public function updateProduct(Request $request, $id)
     {
         try {
-            // Validate input
+            // Ktra input
             $request->validate([
                 'product_id' => 'required|string|max:255',
                 'product_name' => 'required|string|max:255',
@@ -43,10 +37,8 @@ class AdminController extends Controller
                 'image' => 'nullable|string|max:255',
             ]);
 
-            // Tìm product cần update
             $product = Product::findOrFail($id);
 
-            // Update thông tin
             $product->update([
                 'product_id' => $request->product_id,
                 'product_name' => $request->product_name,
@@ -63,13 +55,9 @@ class AdminController extends Controller
         }
     }
 
-    /*
-     *** delete product
-     */
     public function deleteProduct($id)
     {
         try {
-            // Tìm và xóa product
             $product = Product::findOrFail($id);
             $product->delete();
 
@@ -86,7 +74,6 @@ class AdminController extends Controller
     public function storeProduct(Request $request)
     {
         try {
-            // Validate input
             $request->validate([
                 'product_id' => 'required|string|max:255|unique:products,product_id',
                 'product_name' => 'required|string|max:255',
@@ -96,7 +83,6 @@ class AdminController extends Controller
                 'image' => 'nullable|string|max:255',
             ]);
 
-            // Tạo product mới
             Product::create([
                 'product_id' => $request->product_id,
                 'product_name' => $request->product_name,
@@ -116,13 +102,9 @@ class AdminController extends Controller
         }
     }
 
-    /*
-    *** thêm user mới
-    */
     public function storeUser(Request $request)
     {
         try {
-            // Validate input
             $request->validate([
                 'name' => 'required|string|max:50',
                 'email' => 'required|email|max:50|unique:users,email',
@@ -132,7 +114,6 @@ class AdminController extends Controller
                 'password' => 'required|string|min:6',
             ]);
 
-            // Tạo user mới
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -152,16 +133,11 @@ class AdminController extends Controller
         }
     }
 
-    /*
-    *** update user
-    */
     public function updateUser(Request $request, $id)
     {
         try {
-            // Tìm user cần update
             $user = User::findOrFail($id);
 
-            // Validate input
             $request->validate([
                 'name' => 'required|string|max:50',
                 'email' => 'required|email|max:50|unique:users,email,' . $id,
@@ -171,7 +147,7 @@ class AdminController extends Controller
                 'password' => 'nullable|string|min:6',
             ]);
 
-            // Prepare data để update
+            // Cbi data để update
             $updateData = [
                 'name' => $request->name,
                 'email' => $request->email,
@@ -195,13 +171,9 @@ class AdminController extends Controller
         }
     }
 
-    /*
-    *** delete user
-    */
     public function deleteUser($id)
     {
         try {
-            // admin tự xóa chính mình
             if (auth()->id() == $id) {
                 return redirect()->route('admin', ['section' => 'users'])->with('error', 'You cannot delete your own account!');
             }
@@ -217,15 +189,14 @@ class AdminController extends Controller
         }
     }
 
-/*
-     *** Add product to menu (tăng stock lên 1)
+    /*
+     *** Add product vào dashboard
      */
     public function addProductToMenu($id)
     {
         try {
             $product = Product::findOrFail($id);
-            
-            // Tăng stock lên 1
+
             $product->increment('stock', 1);
             
             return redirect()->route('admin', ['section' => 'menu'])
@@ -237,15 +208,11 @@ class AdminController extends Controller
         }
     }
 
-    /*
-     *** Remove product from menu (set stock = 0)
-     */
     public function removeProductFromMenu($id)
     {
         try {
             $product = Product::findOrFail($id);
             
-            // Set stock về 0
             $product->update(['stock' => 0]);
             
             return redirect()->route('admin', ['section' => 'menu'])

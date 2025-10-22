@@ -2,11 +2,7 @@
 *** Menu Management - Add/Remove Products
 */
 
-/*
-*** Function Add Product to Menu (tăng stock lên 1)
-*/
 function addProductToMenu(productId) {
-    // Tạo form để submit
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = '/admin/menu/add/' + productId;
@@ -20,7 +16,6 @@ function addProductToMenu(productId) {
         csrfInput.value = csrfToken.content;
         form.appendChild(csrfInput);
     } else {
-        // Fallback: lấy từ form có sẵn
         const existingToken = document.querySelector('input[name="_token"]');
         if (existingToken) {
             const csrfInput = document.createElement('input');
@@ -31,14 +26,10 @@ function addProductToMenu(productId) {
         }
     }
 
-    // Thêm form vào body và submit
     document.body.appendChild(form);
     form.submit();
 }
 
-/*
-*** Function Remove Product from Menu (set stock = 0)
-*/
 function removeProductFromMenu(productId) {
     // Tạo form để submit
     const form = document.createElement('form');
@@ -54,7 +45,6 @@ function removeProductFromMenu(productId) {
         csrfInput.value = csrfToken.content;
         form.appendChild(csrfInput);
     } else {
-        // Fallback: lấy từ form có sẵn
         const existingToken = document.querySelector('input[name="_token"]');
         if (existingToken) {
             const csrfInput = document.createElement('input');
@@ -65,7 +55,6 @@ function removeProductFromMenu(productId) {
         }
     }
 
-    // Thêm form vào body và submit
     document.body.appendChild(form);
     form.submit();
 }

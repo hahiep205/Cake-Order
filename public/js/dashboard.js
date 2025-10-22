@@ -1,7 +1,6 @@
-// Dashboard JavaScript
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Js for responsive nav menu
     const menuBtn = document.querySelector(".menu-btn");
     const nav = document.querySelector(".nav");
 
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuBtn.classList.toggle("active");
     });
 
-    // Js for image slider nav with auto-play
+    // Js for image slider nav auto-play
     const btns = document.querySelectorAll(".nav-btn");
     const slides = document.querySelectorAll(".image-slide");
     const contents = document.querySelectorAll(".content");
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
     let autoPlayInterval;
     const totalSlides = btns.length;
-    const autoPlayDelay = 5000; // 5 seconds
+    const autoPlayDelay = 5000;
 
     var sliderNav = function (manual) {
         btns.forEach((btn) => {
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, autoPlayDelay);
     }
 
-    // Function to stop auto-play
     function stopAutoPlay() {
         clearInterval(autoPlayInterval);
     }
@@ -59,11 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener("click", () => {
             sliderNav(i);
             stopAutoPlay();
-            startAutoPlay(); // Restart auto-play after manual click
+            startAutoPlay();
         });
     });
 
-    // Pause on hover, resume on mouse leave
     homeSection.addEventListener("mouseenter", () => {
         stopAutoPlay();
     });
@@ -72,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoPlay();
     });
 
-    // Start auto-play on page load
     startAutoPlay();
 
     // Js for header scroll effect
@@ -94,8 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             header.classList.add('scrolled');
-
-            // THÊM CLASS CHO BODY
             document.body.classList.add('scrolled');
 
         } else {
@@ -113,8 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             header.classList.remove('scrolled');
-
-            // XÓA CLASS KHỎI BODY
             document.body.classList.remove('scrolled');
         }
     });
@@ -129,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Chỉ đóng menu nếu đang ở mobile mode
             if (window.innerWidth <= 1040) {
                 closeMenu();
             }

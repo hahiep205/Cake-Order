@@ -35,7 +35,7 @@
                         </td>
                         <td>
                             @if($product->image)
-                                <span class="image_filename" title="{{ $product->image }}">
+                                <span class="image_filename clickable" title="{{ $product->image }}" onclick="showImagePreview('{{ $product->image }}')">
                                     {{ Str::limit($product->image, 15) }}
                                 </span>
                             @else

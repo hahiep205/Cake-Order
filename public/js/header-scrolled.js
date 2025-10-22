@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     header.style.backdropFilter = 'blur(10px)';
     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     header.style.padding = '0';
-    
-    // Đổi màu chữ sang tối
+
     const brand = header.querySelector('.brand');
     const navLinks = header.querySelectorAll('.nav-items a, .nav-logs a, .nav_name');
     
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
         link.style.color = '#222';
     });
-    
-    // Thêm class để đổi màu underline effect
+
     header.classList.add('scrolled');
 });

@@ -102,8 +102,7 @@
     <!-- ================= ABOUT SECTION ================= -->
     <section class="about-section" id="about">
         <div class="about-container">
-            <!-- Top Row -->
-            {{-- <div class="about-top"> --}}
+
                 <div class="about-image-left">
                     <img src="img/avt-about.png" alt="">
                 </div>
@@ -121,10 +120,7 @@
                         pictures of my baking and posting it on my Social Media - different people started paying attention
                         to my work.</p>
                 </div>
-            {{-- </div> --}}
 
-            <!-- Bottom Row -->
-            {{-- <div class="about-bottom"> --}}
                 <div class="about-text-left">
                     <h2 class="about-b">Made with <br> <span class="text-mint">love</span></h2>
                     <p>Our production is 100% handmade. It also explains why we bake naked cakes. These cakes, easily
@@ -139,7 +135,6 @@
                 <div class="about-image-right">
                     <img src="img/cake-about.png" alt="">
                 </div>
-            {{-- </div> --}}
         </div>
     </section>
     </div>

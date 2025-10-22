@@ -10,7 +10,7 @@
             <h2 class="section_title"><i class="ri-shopping-cart-line"></i> Shopping Cart</h2>
 
             @if($cartItems->isEmpty())
-                <!-- Giỏ hàng trống -->
+                <!-- Cart empty -->
                 <div style="text-align: center; padding: 3rem 0;">
                     <i class="ri-shopping-cart-line" style="font-size: 5rem; color: #ddd;"></i>
                     <p style="font-size: 1.2rem; color: #666; margin: 1rem 0;">Your cart is empty</p>
@@ -22,10 +22,9 @@
                     </a>
                 </div>
             @else
-                <!-- Giỏ hàng có sản phẩm -->
+                <!-- Cart not empty -->
                 <div class="cart_container">
 
-                    <!-- Danh sách sản phẩm -->
                     <div class="cart_items">
 
                         @foreach($cartItems as $item)
@@ -71,7 +70,6 @@
                             </div>
                         @endforeach
 
-                        <!-- Button Continue Shopping -->
                         <div class="continue_shopping">
                             <a href="{{ route('dashboard') }}#products">
                                 <button class="continue_btn hover-slide-left">
@@ -82,7 +80,6 @@
 
                     </div>
 
-                    <!-- Bảng tính tiền -->
                     <div class="order_summary">
                         <div class="summary_box">
                             <h3 class="summary_title">ORDER SUMMARY</h3>

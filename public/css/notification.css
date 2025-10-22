@@ -1,7 +1,5 @@
-
 /* <=========================> NOTIFICATION <=========================> */
 
-/* Container chứa tất cả thông báo */
 .notification-container {
     position: fixed;
     top: 70px;
@@ -13,7 +11,6 @@
     pointer-events: none;
 }
 
-/* Từng thông báo */
 .notification {
     min-width: 300px;
     max-width: 400px;
@@ -56,7 +53,6 @@
     animation: fadeOut 0.3s ease-out forwards;
 }
 
-/* Icon thông báo */
 .notification-icon {
     font-size: 24px;
     flex-shrink: 0;
@@ -88,7 +84,7 @@
     color: #333;
 }
 
-/* Loại Success */
+/* Success */
 .notification.success {
     border-left: 4px solid #22c55e;
 }
@@ -97,7 +93,7 @@
     color: #22c55e;
 }
 
-/* Loại Error */
+/* Error */
 .notification.error {
     border-left: 4px solid #ef4444;
 }
@@ -108,7 +104,6 @@
 
 /* Responsive */
 
-/* Min-width: 700px */
 @media screen and (min-width: 700px) {
     .notification-container {
         top: 70px;
@@ -134,7 +129,6 @@
     }
 }
 
-/* Max-width: 699px */
 @media screen and (max-width: 699px) {
     .notification-container {
         top: 65px;
@@ -161,7 +155,6 @@
     }
 }
 
-/* Max-width: 570px */
 @media screen and (max-width: 570px) {
     .notification-container {
         top: 60px;
@@ -189,7 +182,6 @@
     }
 }
 
-/* Min-width: 465px AND Max-width: 570px */
 @media screen and (min-width: 465px) and (max-width: 570px) {
     .notification-container {
         top: 62px;
