@@ -35,22 +35,26 @@ class User extends Authenticatable
         return $token;
     }
 
-    // Func xóa session khi logout
     public function destroySession(): void
     {
         $this->update(['session_token' => null]);
     }
 
-    // func check xem user này có phải admin không.
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
 
-    // func check xem có phải user không.
     public function isUser(): bool
     {
         return $this->role === 'user';
+    }
+
+/*
+     *** Relationship với Orders table
+     */
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 
 }

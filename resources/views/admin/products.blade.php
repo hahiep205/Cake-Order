@@ -35,9 +35,10 @@
                         </td>
                         <td>
                             @if($product->image)
-                                <span class="image_filename clickable" title="{{ $product->image }}" onclick="showImagePreview('{{ $product->image }}')">
+                                <img style="width:60px; height:60px;" src="{{ asset('product_img/' . $product->image) }}">
+                                {{-- <span class="image_filename clickable" title="{{ $product->image }}" onclick="showImagePreview('{{ $product->image }}')">
                                     {{ Str::limit($product->image, 15) }}
-                                </span>
+                                </span> --}}
                             @else
                                 <span class="no_image">
                                     No image

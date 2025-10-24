@@ -50,7 +50,7 @@
                                     </div>
 
                                     <div class="cart_item_price">
-                                        $<span class="item_total">{{ number_format($item->price * $item->quantity, 2) }}</span>
+                                        <span class="item_total">${{ number_format($item->price * $item->quantity, 2) }}</span>
                                     </div>
 
                                     <div class="cart_item_actions">
@@ -106,7 +106,7 @@
 
                             <p class="summary_note">Free shipping on all orders.</p>
 
-                            <button class="checkout_btn hover-slide-left">PROCEED TO CHECKOUT</button>
+                            <button class="checkout_btn hover-slide-left" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</button>
                         </div>
                     </div>
                 </div>

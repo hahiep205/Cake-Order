@@ -109,5 +109,12 @@ class AuthController extends Controller
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
 
+    public function checkProfileInfo()
+    {
+        $user = auth()->user();
+        $valid = !empty($user->phone) && !empty($user->address);
+        
+        return response()->json(['valid' => $valid]);
+    }
 
 }

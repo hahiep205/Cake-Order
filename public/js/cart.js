@@ -187,3 +187,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+/*
+ *** Function xử lý proceed to checkout
+ */
+function proceedToCheckout() {
+    // Check if user has required info
+    fetch('/profile/check-info', {
+        method: 'GET',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.valid) {
+
+            window.location.href = '/checkout';
+        } else {
+
+            showNotification('Please update your phone number and address in your profile to proceed with checkout.', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('Error checking profile information. Please try again.', 'error');
+    });
+}

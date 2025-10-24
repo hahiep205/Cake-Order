@@ -29,9 +29,6 @@ class AddToCart extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    /*
-     *** Relationship: AddToCart thuộc về một Product
-     */
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'product_id');
@@ -50,18 +47,18 @@ class AddToCart extends Model
      */
     public static function addProductToCart($userId, $productId, $productName, $price, $quantity = 1, $note = null)
     {
-        // Check xem sản phẩm đã có trong cart chưa
+
         $existingItem = self::where('user_id', $userId)
             ->where('product_id', $productId)
             ->first();
 
         if ($existingItem) {
-            // Nếu có rồi thì cộng thêm số lượng
+
             $existingItem->quantity += $quantity;
             $existingItem->save();
             return $existingItem;
         } else {
-            // Nếu chưa có thì tạo mới - DÙNG DB::table
+
             $id = DB::table('add_to_cart')->insertGetId([
                 'user_id' => (int) $userId,
                 'product_id' => (string) $productId,
@@ -77,9 +74,6 @@ class AddToCart extends Model
         }
     }
 
-    /*
-     *** tính tổng tiền
-     */
     public static function getTotalAmount($userId)
     {
         return self::where('user_id', $userId)

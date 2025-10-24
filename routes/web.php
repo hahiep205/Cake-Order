@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
@@ -14,27 +15,25 @@ Route::get('register', [AuthController::class, 'register'])->name('auth.register
 // Define route get tới register, gọi func register trong AuthController để hiển thị form đăng ký.
 
 Route::post('register', [AuthController::class, 'registered'])->name('auth.registered');
-// xử lý đăng ký.
 
 Route::get('login', [AuthController::class, 'login'])->name('auth.login'); 
 
 Route::post('login', [AuthController::class, 'logined'])->name('auth.logined'); 
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth'); 
-// xử lý đăng xuất, chỉ vào đc khi đã login.
+// xử lý đăng xuất, chỉ cho vào khi đã login.
+
+Route::get('admin', [AuthController::class, 'admin'])->name('admin')->middleware('auth');
 
 /*
-|========================================= Admin ========================================
+|==================================================== Admin =================================================
 */
+
 Route::middleware(['auth'])->prefix('admin')->group(function() {
-    Route::get('admin', [AuthController::class, 'admin'])->name('admin');
-    // trả vè trang admin
     
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    // hiển thị trang admin với danh sách products
     
     Route::post('/products/store', [AdminController::class, 'storeProduct'])->name('admin.products.store');
-    // thêm product mới
     
     Route::put('/products/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
     
@@ -53,26 +52,23 @@ Route::middleware(['auth'])->prefix('admin')->group(function() {
 });
 
 /*
-|========================================= Profile ======================================
+|==================================================== Profile =================================================
 */
+
+Route::get('profile', function () {
+    return view('profile');})->name('profile')->middleware('auth'); 
+
+Route::get('profile_edit', function () {
+    return view('modals.profile-management.profile_edit');})->name('profile_edit')->middleware('auth'); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
-    // hiển thị profile.
 
     Route::put('/profile/update', [AuthController::class, 'updateProfile'])->name('profile.update');
-
-    Route::get('profile', function () {
-        return view('profile');})->name('profile')->middleware('auth'); 
-    // view profile
-
-    Route::get('profile_edit', function () {
-        return view('modals.profile-management.profile_edit');})->name('profile_edit')->middleware('auth'); 
-
 });
 
 /*
-|========================================= Cart ======================================
+|==================================================== Cart =================================================
 */
 
 Route::middleware('auth')->group(function () {
@@ -86,6 +82,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/remove/{id}', [CartController::class, 'removeItem'])->name('cart.remove');
 
     Route::patch('/cart/note/{id}', [CartController::class, 'updateNote'])->name('cart.note');
-    // save note của product.
+    // save note
 
+});
+
+/*
+|==================================================== Checkout =================================================
+*/
+
+Route::middleware('auth')->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/checkout/process', [CheckoutController::class, 'processOrder'])->name('checkout.process');
+    Route::get('/profile/check-info', [AuthController::class, 'checkProfileInfo'])->name('profile.check-info');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 });
