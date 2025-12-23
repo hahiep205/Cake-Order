@@ -86,6 +86,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
+
 /*
 |==================================================== Checkout =================================================
 */
@@ -94,5 +95,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/checkout/process', [CheckoutController::class, 'processOrder'])->name('checkout.process');
     Route::get('/profile/check-info', [AuthController::class, 'checkProfileInfo'])->name('profile.check-info');
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 });

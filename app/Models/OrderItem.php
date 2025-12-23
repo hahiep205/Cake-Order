@@ -11,13 +11,23 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id', 'product_id', 'product_name', 
-        'unit_price', 'quantity', 'note', 'item_total'
+        'unit_price', 'quantity', 'note', 'item_total',
+        'product_image' // ✅ THÊM FIELD IMAGE
     ];
 
     /*
-     *** Relationship với Orders table
+     *** Relationship với Order
      */
-    public function order() {
+    public function order()
+    {
         return $this->belongsTo(Order::class);
+    }
+    
+    /*
+     *** Relationship với Product (optional, để lấy thông tin hiện tại)
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }
 }

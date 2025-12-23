@@ -41,10 +41,13 @@
                                 @foreach($order->orderItems as $item)
                                     <div class="single_order_product">
                                         <div class="order_product_image">
-                                            @if($item->product && $item->product->image)
+                                            {{-- ✅ SỬA LẠI: ƯU TIÊN product_image từ order_items --}}
+                                            @if($item->product_image)
+                                                <img src="{{ asset('product_img/' . $item->product_image) }}" alt="{{ $item->product_name }}">
+                                            @elseif($item->product && $item->product->image)
                                                 <img src="{{ asset('product_img/' . $item->product->image) }}" alt="{{ $item->product_name }}">
                                             @else
-                                                <img src="{{ asset('img/cake1-1.jpg') }}" alt="{{ $item->product_name }}">
+                                                <img src="{{ asset('product_img/cake1-1.jpg') }}" alt="{{ $item->product_name }}">
                                             @endif
                                         </div>
                                         <div class="order_product_details">

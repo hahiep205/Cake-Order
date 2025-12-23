@@ -1,4 +1,5 @@
 <?php
+// File: database/migrations/xxxx_create_order_items_table.php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,13 +13,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             
-            // Product info snapshot
+            // Product info snapshot (LƯU TRỰC TIẾP IMAGE)
             $table->string('product_id', 50);
             $table->string('product_name', 255);
             $table->decimal('unit_price', 8, 2);
             $table->integer('quantity');
             $table->text('note')->nullable();
             $table->decimal('item_total', 10, 2);
+            
+            // ✅ THÊM FIELD IMAGE SNAPSHOT
+            $table->string('product_image')->nullable();
             
             $table->timestamps();
             
